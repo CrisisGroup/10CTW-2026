@@ -31,14 +31,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "franklin-gothic-urw", sans-serif;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 /* Basic copy */
 p {
   line-height: 1.6;
   font-size: 1rem;
+  text-align: left;  
 }
 
 /* ---------- Hero (short editorial video header) ---------- */
@@ -86,6 +88,7 @@ p {
   margin: 0 0 0.75rem;
   max-width: 18ch; /* ✅ keeps the title tight */
   color: #bd4f34;
+  text-transform: none !important;
 }
 
 .hero__byline,
@@ -98,7 +101,7 @@ p {
   margin: 0 0 0.35rem;
   font-size: 1rem;
   opacity: 0.9;
-  font-family: "franklin-gothic-urw", sans-serif;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
 /* Published date */
@@ -106,9 +109,51 @@ p {
   margin: 0;
   font-size: 0.95rem;
   opacity: 0.65;
-  font-family: "franklin-gothic-urw", sans-serif;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
+/* ---------- Hero Intro Dropcap Graf (Centered, No Forced Line Break) ---------- */
+
+/* Center the whole block, but allow internal left alignment */
+.hero__intro-wrap {
+  text-align: center;
+}
+
+/* Paragraph itself is left-aligned, but centered as an inline-block */
+.hero__intro {
+  position: relative;
+  display: inline-block;
+
+  margin-top: 2.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 42rem;
+
+  text-align: left;        /* ✅ natural paragraph + dropcap */
+  padding-left: 3rem;      /* room for the dropcap */
+}
+
+/* First line in condensed sans-serif */
+.hero__intro::first-line {
+  font-family: "franklin-gothic-urw-cond", sans-serif;
+  letter-spacing: 0.045em;
+  color: #bd4f34; 
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Absolutely positioned dropcap that doesn't affect line breaks */
+.dropcap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
+  font-size: 4.8rem;
+  line-height: 0.85;
+  font-weight: 600;
+  pointer-events: none;
+  color: #d48a77;
+}
 
 /* ---------- Intro sections ---------- */
 
@@ -126,6 +171,39 @@ p {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
+/* ---------- Fullscreen map scene with invisible scroll steps ---------- */
+
+.map-scene {
+  position: relative;
+  height: 250vh;           /* enough vertical space for two "scrolls" */
+}
+
+.map-scene__map {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* The step container stretches across the same height as the scene */
+.map-scene__steps {
+  position: relative;
+  height: 250vh;
+}
+
+/* Each step = roughly one viewport of scroll. Invisible. */
+.map-scene .step {
+  height: 100vh;
+}
+
+/* Copy section that follows the map */
+.chapter-copy {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
 
 /* ---------- Scrollytelling chapter ---------- */
 

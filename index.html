@@ -1,114 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Ten Conflicts to Watch</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Ten Conflicts to Watch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Mapbox CSS -->
-  <link
-    href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css"
-    rel="stylesheet"
-  />
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet" />
 
-  <!-- Adobe Typekit (replace XXXXXXX with your kit ID) -->
-  <link rel="stylesheet" href="https://use.typekit.net/kjv8sgv.css">
+    <!-- Adobe Typekit (replace XXXXXXX with your kit ID) -->
+    <link rel="stylesheet" href="https://use.typekit.net/amu4upa.css">
 
-  <!-- Your external stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+    <!-- Your external stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <!-- Fullscreen hero with autoplay video -->
-  <header class="hero">
-  <div class="hero__video-wrap">
-    <video
-      class="hero__video"
-      autoplay
-      muted
-      loop
-      playsinline
-    >
-      <source src="media/ten-conflicts-hero.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
+    <!-- Fullscreen hero with autoplay video -->
+    <header class="hero">
+        <div class="hero__video-wrap">
+            <video class="hero__video" autoplay muted loop playsinline>
+                <source src="media/ten-conflicts-hero.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-  <!-- Text now lives BELOW the video -->
-  <div class="hero__text">
-    <h1>Ten Conflicts to Watch</h1>
+        <!-- Text now lives BELOW the video -->
+        <div class="hero__text">
+            <h1>Ten Conflicts to Watch</h1>
 
-    <p class="hero__byline">
-      by <strong>Comfort Ero</strong> and <strong>Richard Atwood</strong>
-    </p>
+            <p class="hero__byline">
+                by <strong>Comfort Ero</strong> and <strong>Richard Atwood</strong>
+            </p>
 
-    <p class="hero__dateline">
-      Published 1 January, 2026
-    </p>
-  </div>
-</header>
+            <p class="hero__dateline">
+                Published 1 January, 2026
+            </p>
+            <div class="hero__intro-wrap">
+                <p class="hero__intro">
+                    <span class="dropcap">T</span>he world order as we know it is gone starting 2026.
+                    The Western alliances have fallen apart, tariffs have triggered trade wars and the
+                    world fragments into competing spheres of influence rather than rules-based cooperation.
+                </p>
+            </div>
 
+        </div>
+    </header>
 
-  <main>
-    <!-- Intro copy after hero (can be shorter now that hero carries the title) -->
-    <section class="intro">
-      <h2>Why these conflicts matter</h2>
-      <p>
-        Short introductory explainer text. You can tease the ten cases here and
-        cue the reader that they’ll scroll into an interactive map for each.
-      </p>
-    </section>
+    <main>
+        <!-- Fullscreen map scene with 2 invisible scroll steps -->
+        <section class="map-scene" data-chapter-id="world-order">
+            <div id="map-world-order" class="map-scene__map"></div>
 
-    <!-- One map chapter example -->
-    <section class="chapter" data-chapter-id="gaza">
-      <div id="map" class="chapter__map"></div>
+            <!-- Invisible waypoints that drive the transitions -->
+            <div class="map-scene__steps">
+                <div class="step" data-step-id="world-order-1"></div>
+                <div class="step" data-step-id="world-order-2"></div>
+            </div>
+        </section>
 
-      <div class="chapter__text">
-        <article class="step" data-step-id="gaza-0">
-          <h3>Gaza &amp; Israel/Palestine</h3>
-          <p>
-            Set up the baseline geography and core urban areas before any layers
-            fade fully in.
-          </p>
-        </article>
+        <!-- Text the user reads AFTER the transitions are done -->
+        <section class="chapter-copy chapter-copy--world-order">
+            <h2>The HORN OF AFRICA: Sudan, Eritrea, Ethiopia</h2>
+            <p>
+                The Eritrea-Sudan-Ethiopia triangle is defined by shifting alliances and territorial disputes rooted in the region's complex history. Eritrea and Ethiopia fought a brutal border war that killed tens of thousands, though they signed a peace deal in 2018. Ethiopia's civil war in Tigray saw Eritrean forces intervene alongside Ethiopian federal troops, allegedly committing atrocities. Sudan has faced its own instability, with border tensions with Ethiopia over al-Fasher territory and concerns about the Grand Ethiopian Renaissance Dam.
+            </p>
+        </section>
 
-        <article class="step" data-step-id="gaza-1">
-          <h3>Ceasefire Lines</h3>
-          <p>
-            Fade in ceasefire lines and boundaries that define the current
-            military and political reality.
-          </p>
-        </article>
+        <!-- Intro copy after hero (can be shorter now that hero carries the title) -->
+        <section class="intro">
+            <h2>The HORN OF AFRICA: Sudan, Eritrea, Ethiopia</h2>
+            <p>
+                Short introductory explainer text. You can tease the ten cases here and
+                cue the reader that they’ll scroll into an interactive map for each.
+            </p>
+        </section>
 
-        <article class="step" data-step-id="gaza-2">
-          <h3>Forward Positions</h3>
-          <p>
-            Add in positions, fortifications, and areas of control; slightly
-            adjust the camera.
-          </p>
-        </article>
+        <!-- One map chapter example -->
+        <section class="chapter" data-chapter-id="gaza">
+            <div id="map" class="chapter__map"></div>
 
-        <article class="step" data-step-id="gaza-3">
-          <h3>What’s at stake</h3>
-          <p>
-            Final state of the map; after this the reader scrolls on to the next
-            conflict.
-          </p>
-        </article>
-      </div>
-    </section>
+            <div class="chapter__text">
+                <article class="step" data-step-id="gaza-0">
+                    <h3>Gaza &amp; Israel/Palestine</h3>
+                    <p>
+                        Set up the baseline geography and core urban areas before any layers
+                        fade fully in.
+                    </p>
+                </article>
 
-    <!-- Next normal content or next chapter stub -->
-    <section class="intro">
-      <h2>Next conflict</h2>
-      <p>
-        Placeholder for the next case. You can either repeat another map chapter
-        or use more conventional layouts here.
-      </p>
-    </section>
-  </main>
+                <article class="step" data-step-id="gaza-1">
+                    <h3>Ceasefire Lines</h3>
+                    <p>
+                        Fade in ceasefire lines and boundaries that define the current
+                        military and political reality.
+                    </p>
+                </article>
 
-  <!-- Mapbox JS + your app logic -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
-  <script src="app.js" type="module"></script>
+                <article class="step" data-step-id="gaza-2">
+                    <h3>Forward Positions</h3>
+                    <p>
+                        Add in positions, fortifications, and areas of control; slightly
+                        adjust the camera.
+                    </p>
+                </article>
+
+                <article class="step" data-step-id="gaza-3">
+                    <h3>What’s at stake</h3>
+                    <p>
+                        Final state of the map; after this the reader scrolls on to the next
+                        conflict.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Next normal content or next chapter stub -->
+        <section class="intro">
+            <h2>Next conflict</h2>
+            <p>
+                Placeholder for the next case. You can either repeat another map chapter
+                or use more conventional layouts here.
+            </p>
+        </section>
+    </main>
+
+    <!-- Mapbox JS + your app logic -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+    <script src="app.js" type="module"></script>
 </body>
+
 </html>
