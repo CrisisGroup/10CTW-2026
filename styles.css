@@ -1,0 +1,186 @@
+/* ---------- Global ---------- */
+
+:root {
+  --bg: #050505;
+  --fg: #f5f5f5;
+  --accent: #f15b37;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "PT-Serif", serif; /* body text */
+}
+
+/* Headings use Franklin Gothic from Typekit */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "franklin-gothic-urw", sans-serif;
+  font-weight: 600;
+}
+
+/* Basic copy */
+p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* ---------- Hero (short editorial video header) ---------- */
+
+.hero {
+  width: 100%;
+  background: var(--bg);
+}
+
+/* Controls the HEIGHT of the video header */
+.hero__video-wrap {
+  position: relative;
+  width: 100%;
+  height: 55vh; /* ✅ shorter than fullscreen */
+  overflow: hidden;
+}
+
+.hero__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Text block below the video */
+.hero__text {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Lowercase editorial headline */
+.hero h1 {
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  margin: 0 0 0.75rem;
+  max-width: 18ch; /* ✅ keeps the title tight */
+  color: #bd4f34;
+}
+
+.hero__byline,
+.hero__dateline {
+  max-width: 34rem;
+}
+
+/* Byline */
+.hero__byline {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  font-family: "franklin-gothic-urw", sans-serif;
+}
+
+/* Published date */
+.hero__dateline {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.65;
+  font-family: "franklin-gothic-urw", sans-serif;
+}
+
+
+/* ---------- Intro sections ---------- */
+
+.intro {
+  min-height: 80vh;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.intro h2 {
+  font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Scrollytelling chapter ---------- */
+
+.chapter {
+  position: relative;
+  min-height: 300vh; /* enough scroll to walk through steps */
+}
+
+/* Sticky map */
+.chapter__map {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Scroll text column */
+.chapter__text {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+/* Individual step blocks */
+.step {
+  min-height: 80vh;
+  padding: 3rem 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 1.25rem;
+  opacity: 0.45;
+  transition:
+    opacity 200ms ease-out,
+    border-color 200ms ease-out;
+}
+
+.step + .step {
+  margin-top: 1.5rem;
+}
+
+.step.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.step h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Generic helper for "highlighted row" states if you need it */
+.highlighted-row {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 400ms ease-out;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ten Conflicts to Watch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Mapbox CSS -->
+  <link
+    href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css"
+    rel="stylesheet"
+  />
+
+  <!-- Adobe Typekit (replace XXXXXXX with your kit ID) -->
+  <link rel="stylesheet" href="https://use.typekit.net/kjv8sgv.css">
+
+  <!-- Your external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Fullscreen hero with autoplay video -->
+  <header class="hero">
+  <div class="hero__video-wrap">
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="media/ten-conflicts-hero.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Text now lives BELOW the video -->
+  <div class="hero__text">
+    <h1>Ten Conflicts to Watch</h1>
+
+    <p class="hero__byline">
+      by <strong>Comfort Ero</strong> and <strong>Richard Atwood</strong>
+    </p>
+
+    <p class="hero__dateline">
+      Published 1 January, 2026
+    </p>
+  </div>
+</header>
+
+
+  <main>
+    <!-- Intro copy after hero (can be shorter now that hero carries the title) -->
+    <section class="intro">
+      <h2>Why these conflicts matter</h2>
+      <p>
+        Short introductory explainer text. You can tease the ten cases here and
+        cue the reader that they’ll scroll into an interactive map for each.
+      </p>
+    </section>
+
+    <!-- One map chapter example -->
+    <section class="chapter" data-chapter-id="gaza">
+      <div id="map" class="chapter__map"></div>
+
+      <div class="chapter__text">
+        <article class="step" data-step-id="gaza-0">
+          <h3>Gaza &amp; Israel/Palestine</h3>
+          <p>
+            Set up the baseline geography and core urban areas before any layers
+            fade fully in.
+          </p>
+        </article>
+
+        <article class="step" data-step-id="gaza-1">
+          <h3>Ceasefire Lines</h3>
+          <p>
+            Fade in ceasefire lines and boundaries that define the current
+            military and political reality.
+          </p>
+        </article>
+
+        <article class="step" data-step-id="gaza-2">
+          <h3>Forward Positions</h3>
+          <p>
+            Add in positions, fortifications, and areas of control; slightly
+            adjust the camera.
+          </p>
+        </article>
+
+        <article class="step" data-step-id="gaza-3">
+          <h3>What’s at stake</h3>
+          <p>
+            Final state of the map; after this the reader scrolls on to the next
+            conflict.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Next normal content or next chapter stub -->
+    <section class="intro">
+      <h2>Next conflict</h2>
+      <p>
+        Placeholder for the next case. You can either repeat another map chapter
+        or use more conventional layouts here.
+      </p>
+    </section>
+  </main>
+
+  <!-- Mapbox JS + your app logic -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
