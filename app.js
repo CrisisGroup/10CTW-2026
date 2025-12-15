@@ -9,40 +9,33 @@ const chapterConfig = {
       bearing: 0
     },
     layers: {
-      borders: "country-borders-line",
-      overlay: "world-risk-overlay-fill"
+      "sudan-countries": "sudan-countries",           // Studio layer id (line/fill)
+      "sudan-country-labels": "sudan-country-labels"  // Studio layer id (symbol)
     },
+
     steps: [
       {
         id: "world-order-1",
         camera: {
-          center: [10, 20],
-          zoom: 1.7,
+          center: [33.37291, 25.14727],
+          zoom: 4.5,
           pitch: 0,
           bearing: 0
         },
-        paintTransitions: [
-          {
-            layerKey: "borders",
-            paint: "line-opacity",
-            to: 0.9
-          }
+        opacityTransitions: [
+          { layerKey: "sudan-countries", to: 1 }
         ]
       },
       {
         id: "world-order-2",
         camera: {
-          center: [10, 20],
-          zoom: 2.1,
+          center: [33.37291, 25.14727],
+          zoom: 5.2,
           pitch: 20,
           bearing: -10
         },
-        paintTransitions: [
-          {
-            layerKey: "overlay",
-            paint: "fill-opacity", // or circle-opacity / symbol-opacity
-            to: 0.8
-          }
+        opacityTransitions: [
+          { layerKey: "sudan-country-labels", to: 1 }
         ]
       }
     ]
@@ -53,7 +46,7 @@ const chapterConfig = {
 
 const map = new mapboxgl.Map({
   container: "map-world-order",
-  style: "mapbox://styles/daltonwb/cmiqj0lh0000401qwbwt41s6e",
+  style: "mapbox://styles/daltonwb/cmj7ju0xv001y01ry823s1gmh",
   center: chapterConfig["world-order"].initialView.center,
   zoom: chapterConfig["world-order"].initialView.zoom,
   pitch: chapterConfig["world-order"].initialView.pitch,
@@ -63,21 +56,33 @@ const map = new mapboxgl.Map({
 });
 
 // Helper: tween any paint property (opacity etc.)
-function animatePaintProperty(map, layerId, paintProp, target, duration = 700) {
+function animateLayerOpacity(map, layerId, target, duration = 700) {
+  const paintProps = getOpacityPaintProperty(map, layerId);
+  if (!paintProps) return;
+
+  const props = Array.isArray(paintProps) ? paintProps : [paintProps];
   const start = performance.now();
-  const initial = map.getPaintProperty(layerId, paintProp) ?? 0;
+
+  const initials = props.map((prop) => ({
+    prop,
+    value: map.getPaintProperty(layerId, prop) ?? 0
+  }));
 
   function frame(now) {
     const t = Math.min(1, (now - start) / duration);
     const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-    const value = initial + (target - initial) * eased;
-    map.setPaintProperty(layerId, paintProp, value);
+
+    initials.forEach(({ prop, value }) => {
+      const next = value + (target - value) * eased;
+      map.setPaintProperty(layerId, prop, next);
+    });
 
     if (t < 1) requestAnimationFrame(frame);
   }
 
   requestAnimationFrame(frame);
 }
+
 
 function flyCamera(map, camera, duration = 1400) {
   map.flyTo({
@@ -87,8 +92,26 @@ function flyCamera(map, camera, duration = 1400) {
   });
 }
 
+function getOpacityPaintProperty(map, layerId) {
+  const layer = map.getLayer(layerId);
+  if (!layer) return null;
+
+  switch (layer.type) {
+    case "fill":
+      return "fill-opacity";
+    case "symbol":
+      // fade both; harmless if one isn't used
+      return ["text-opacity", "icon-opacity"];
+    default:
+      return null;
+  }
+}
+
 function activateStep(stepEl) {
-  const chapterId = stepEl.closest(".map-scene").dataset.chapterId;
+  const chapterEl = stepEl.closest(".map-scene");
+  if (!chapterEl) return;
+
+  const chapterId = chapterEl.dataset.chapterId;
   const config = chapterConfig[chapterId];
   if (!config) return;
 
@@ -96,22 +119,49 @@ function activateStep(stepEl) {
   const stepConfig = config.steps.find((s) => s.id === stepId);
   if (!stepConfig) return;
 
+  console.log("ACTIVATE STEP:", stepId);
+
+  // Camera
   if (stepConfig.camera) {
-    const cam = {
-      center: config.initialView.center,
-      ...stepConfig.camera
-    };
+    const cam = { center: config.initialView.center, ...stepConfig.camera };
     flyCamera(map, cam);
   }
 
-  if (stepConfig.paintTransitions) {
-    stepConfig.paintTransitions.forEach((t) => {
+  // Opacity transitions
+  if (stepConfig.opacityTransitions) {
+    stepConfig.opacityTransitions.forEach((t) => {
       const layerId = config.layers[t.layerKey];
-      if (!layerId) return;
-      animatePaintProperty(map, layerId, t.paint, t.to);
+
+      console.log(
+        "[opacityTransitions]",
+        "layerKey:", t.layerKey,
+        "-> layerId:", layerId,
+        "target:", t.to
+      );
+
+      if (!layerId) {
+        console.warn("❌ No layerId for layerKey:", t.layerKey, "registry keys:", Object.keys(config.layers));
+        return;
+      }
+
+      const layer = map.getLayer(layerId);
+      console.log("Layer exists in style?", !!layer, "type:", layer?.type);
+
+      if (!layer) {
+        console.warn("❌ Layer not found in loaded style:", layerId);
+        return;
+      }
+
+      const paintProps = getOpacityPaintProperty(map, layerId);
+      console.log("Resolved paint props:", paintProps);
+
+      animateLayerOpacity(map, layerId, t.to);
     });
   }
 }
+
+
+
 
 map.on("load", () => {
   const config = chapterConfig["world-order"];
@@ -129,12 +179,12 @@ map.on("load", () => {
       type === "line"
         ? "line-opacity"
         : type === "fill"
-        ? "fill-opacity"
-        : type === "circle"
-        ? "circle-opacity"
-        : type === "symbol"
-        ? "icon-opacity"
-        : null;
+          ? "fill-opacity"
+          : type === "circle"
+            ? "circle-opacity"
+            : type === "symbol"
+              ? "icon-opacity"
+              : null;
 
     if (defaultProp) {
       map.setPaintProperty(layerId, defaultProp, 0);
@@ -146,19 +196,18 @@ map.on("load", () => {
     '.map-scene[data-chapter-id="world-order"] .step'
   );
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-          activateStep(entry.target);
-        }
-      });
-    },
-    {
-      threshold: [0.6],
-      rootMargin: "-10% 0px -40% 0px"
-    }
-  );
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log("INTERSECT:", entry.target.dataset.stepId, entry.intersectionRatio);
+        activateStep(entry.target);
+      }
+    });
+  },
+  { threshold: [0.25] }
+);
+
 
   steps.forEach((step) => observer.observe(step));
 });

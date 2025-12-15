@@ -21,7 +21,7 @@ body {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: "PT-Serif", serif; /* body text */
+  font-family: "PT Serif", serif;
 }
 
 /* Headings use Franklin Gothic from Typekit */
@@ -36,11 +36,16 @@ h6 {
   text-transform: uppercase;
 }
 
+/* Section headers (h2) have accent color */
+h2 {
+  color: #d48a77;
+}
+
 /* Basic copy */
 p {
   line-height: 1.6;
   font-size: 1rem;
-  text-align: left;  
+  text-align: left;
 }
 
 /* ---------- Hero (short editorial video header) ---------- */
@@ -50,11 +55,10 @@ p {
   background: var(--bg);
 }
 
-/* Controls the HEIGHT of the video header */
 .hero__video-wrap {
   position: relative;
   width: 100%;
-  height: 55vh; /* ✅ shorter than fullscreen */
+  height: 55vh;
   overflow: hidden;
 }
 
@@ -70,7 +74,6 @@ p {
   object-fit: cover;
 }
 
-/* Text block below the video */
 .hero__text {
   max-width: 720px;
   margin: 0 auto;
@@ -81,12 +84,10 @@ p {
   align-items: center;
 }
 
-
-/* Lowercase editorial headline */
 .hero h1 {
   font-size: clamp(2.2rem, 3.6vw, 3.2rem);
   margin: 0 0 0.75rem;
-  max-width: 18ch; /* ✅ keeps the title tight */
+  max-width: 18ch;
   color: #bd4f34;
   text-transform: none !important;
 }
@@ -96,7 +97,6 @@ p {
   max-width: 34rem;
 }
 
-/* Byline */
 .hero__byline {
   margin: 0 0 0.35rem;
   font-size: 1rem;
@@ -104,7 +104,6 @@ p {
   font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
-/* Published date */
 .hero__dateline {
   margin: 0;
   font-size: 0.95rem;
@@ -114,35 +113,29 @@ p {
 
 /* ---------- Hero Intro Dropcap Graf (Centered, No Forced Line Break) ---------- */
 
-/* Center the whole block, but allow internal left alignment */
 .hero__intro-wrap {
   text-align: center;
 }
 
-/* Paragraph itself is left-aligned, but centered as an inline-block */
 .hero__intro {
   position: relative;
   display: inline-block;
-
   margin-top: 2.25rem;
   font-size: 1.05rem;
   line-height: 1.65;
   max-width: 42rem;
-
-  text-align: left;        /* ✅ natural paragraph + dropcap */
-  padding-left: 3rem;      /* room for the dropcap */
+  text-align: left;
+  padding-left: 3rem;
 }
 
-/* First line in condensed sans-serif */
 .hero__intro::first-line {
   font-family: "franklin-gothic-urw-cond", sans-serif;
   letter-spacing: 0.045em;
-  color: #bd4f34; 
+  color: #bd4f34;
   text-transform: uppercase;
   font-weight: bold;
 }
 
-/* Absolutely positioned dropcap that doesn't affect line breaks */
 .dropcap {
   position: absolute;
   left: 0;
@@ -169,14 +162,13 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 /* ---------- Fullscreen map scene with invisible scroll steps ---------- */
 
 .map-scene {
   position: relative;
-  height: 250vh;           /* enough vertical space for two "scrolls" */
+  height: 300vh; /* 1 viewport for the sticky map's flow space + 2 step viewports */
 }
 
 .map-scene__map {
@@ -186,33 +178,37 @@ p {
   width: 100vw;
 }
 
-/* The step container stretches across the same height as the scene */
 .map-scene__steps {
   position: relative;
-  height: 250vh;
+  height: 200vh; /* 2 steps × 100vh */
 }
 
-/* Each step = roughly one viewport of scroll. Invisible. */
-.map-scene .step {
+.map-scene .map-scene__steps > .step {
   height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Copy section that follows the map */
+
+/* ---------- Copy section that follows the map ---------- */
+
 .chapter-copy {
   max-width: 720px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 5rem;
+  padding: 0 1.5rem 5rem;
 }
-
 
 /* ---------- Scrollytelling chapter ---------- */
 
 .chapter {
   position: relative;
-  min-height: 300vh; /* enough scroll to walk through steps */
+  min-height: 300vh;
 }
 
-/* Sticky map */
 .chapter__map {
   position: sticky;
   top: 0;
@@ -220,7 +216,6 @@ p {
   width: 100vw;
 }
 
-/* Scroll text column */
 .chapter__text {
   position: relative;
   max-width: 720px;
@@ -228,8 +223,8 @@ p {
   padding: 4rem 1.5rem 6rem;
 }
 
-/* Individual step blocks */
-.step {
+/* Individual step blocks (ONLY for chapter text steps) */
+.chapter .step {
   min-height: 80vh;
   padding: 3rem 0;
   border-left: 2px solid rgba(255, 255, 255, 0.1);
@@ -240,25 +235,34 @@ p {
     border-color 200ms ease-out;
 }
 
-.step + .step {
+.chapter .step + .step {
   margin-top: 1.5rem;
 }
 
-.step.is-active {
+.chapter .step.is-active {
   opacity: 1;
   border-color: var(--accent);
 }
 
-.step h3 {
+.chapter .step h3 {
   margin-top: 0;
   margin-bottom: 0.75rem;
   font-size: 1.4rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
-/* Generic helper for "highlighted row" states if you need it */
-.highlighted-row {
-  background: rgba(255, 255, 255, 0.1);
-  transition: background 400ms ease-out;
+/* ---------- Hard return wedge ---------- */
+
+.hard-return {
+  margin: 3rem auto 0;
+  width: clamp(90px, 12vw, 140px);
+  opacity: 0.9;
+}
+
+.hard-return svg {
+  display: block;
+}
+
+.hard-return polygon {
+  fill: #bd4f34;
 }
