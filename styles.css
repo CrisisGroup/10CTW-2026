@@ -273,8 +273,6 @@ p {
   fill: #bd4f34;
 }
 
-
-
 /* ---------- Breakout media (slightly wider than text column) ---------- */
 
 .media-breakout {
@@ -286,6 +284,7 @@ p {
   font-size: 0.95rem;
   opacity: 0.75;
   text-align: left;
+  font-family: "franklin-gothic-urw", sans-serif;
 }
 
 /* ---------- Wide media that bleeds beyond the text column (centered) ---------- */
@@ -365,4 +364,31 @@ p {
   margin-top: 2.5rem;
   font-size: 0.85rem;
   opacity: 0.6;
+}
+
+/* ---------- Side-by-side breakout media ---------- */
+
+.wide-media--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem; /* visual separation between panels */
+}
+
+.wide-media--split img,
+.wide-media--split video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: enforce equal-height panels for video/image mixes */
+.wide-media--split video {
+  object-fit: cover;
+}
+
+/* Mobile fallback: stack vertically */
+@media (max-width: 700px) {
+  .wide-media--split {
+    grid-template-columns: 1fr;
+  }
 }
