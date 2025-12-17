@@ -16,6 +16,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -185,7 +186,7 @@ p {
   height: calc(var(--scene-steps, 2) * 100vh);
 }
 
-.map-scene .map-scene__steps > .step {
+.map-scene .map-scene__steps>.step {
   height: 100vh;
   width: 100%;
   padding: 0;
@@ -236,7 +237,7 @@ p {
     border-color 200ms ease-out;
 }
 
-.chapter .step + .step {
+.chapter .step+.step {
   margin-top: 1.5rem;
 }
 
@@ -254,33 +255,30 @@ p {
 
 /* ---------- Hard return wedge ---------- */
 
+
 .hard-return {
-  margin: 3rem auto 0;
+  margin: 2.25rem auto;   /* ✅ equal top/bottom spacing */
   width: clamp(90px, 12vw, 140px);
   opacity: 0.9;
+  line-height: 0;         /* ✅ normalization */
 }
 
 .hard-return svg {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 .hard-return polygon {
   fill: #bd4f34;
 }
 
+
+
 /* ---------- Breakout media (slightly wider than text column) ---------- */
 
 .media-breakout {
-  margin: 2.5rem auto;
-  width: min(920px, calc(100% + 120px)); /* “break out” ~60px each side */
-  transform: translateX(0);
-}
-
-.media-breakout img,
-.media-breakout video {
-  width: 100%;
-  height: auto;
-  display: block;
+  margin: 2.5rem 0;
 }
 
 .media-breakout figcaption {
@@ -289,6 +287,40 @@ p {
   opacity: 0.75;
   text-align: left;
 }
+
+/* ---------- Wide media that bleeds beyond the text column (centered) ---------- */
+
+.wide-media {
+  position: relative;
+
+  /* Center the box relative to the page, not the padded text column */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Width rules: wide but not full-bleed */
+  width: min(1100px, calc(100vw - 3rem));
+  /* 3rem ~= your 1.5rem L/R page padding */
+  max-width: 1100px;
+
+  margin-top: 2.25rem;
+  margin-bottom: 0;
+}
+
+.wide-media img,
+.wide-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Optional: cinematic crop for videos/images */
+.wide-media video,
+.wide-media img {
+  border-radius: 0;
+}
+
+
+
 
 /* ---------- Footer credits ---------- */
 
@@ -313,7 +345,7 @@ p {
 }
 
 .credits__text {
-    font-family: "franklin-gothic-urw-cond", sans-serif;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   opacity: 0.85;
@@ -322,6 +354,7 @@ p {
 
 .credits__text strong {
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .credits__spaced {
