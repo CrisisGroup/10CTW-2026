@@ -44,8 +44,9 @@ h2 {
 /* Basic copy */
 p {
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: left;
+  font-family: pt-serif, serif;
 }
 
 /* ---------- Hero (short editorial video header) ---------- */
@@ -60,7 +61,7 @@ p {
   width: 100%;
   /* height: 55vh; */
   overflow: hidden;
-   aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9;
 }
 
 .hero__video {
@@ -169,7 +170,7 @@ p {
 
 .map-scene {
   position: relative;
-  height: 300vh; /* 1 viewport for the sticky map's flow space + 2 step viewports */
+  height: calc((var(--scene-steps, 2) + 1) * 100vh);
 }
 
 .map-scene__map {
@@ -181,7 +182,7 @@ p {
 
 .map-scene__steps {
   position: relative;
-  height: 200vh; /* 2 steps × 100vh */
+  height: calc(var(--scene-steps, 2) * 100vh);
 }
 
 .map-scene .map-scene__steps > .step {
@@ -193,7 +194,6 @@ p {
   opacity: 0;
   pointer-events: none;
 }
-
 
 /* ---------- Copy section that follows the map ---------- */
 
@@ -266,4 +266,70 @@ p {
 
 .hard-return polygon {
   fill: #bd4f34;
+}
+
+/* ---------- Breakout media (slightly wider than text column) ---------- */
+
+.media-breakout {
+  margin: 2.5rem auto;
+  width: min(920px, calc(100% + 120px)); /* “break out” ~60px each side */
+  transform: translateX(0);
+}
+
+.media-breakout img,
+.media-breakout video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-breakout figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  text-align: left;
+}
+
+/* ---------- Footer credits ---------- */
+
+.credits {
+  background: var(--bg);
+  padding: 4rem 1.5rem 5rem;
+}
+
+.credits__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.credits__label {
+  font-family: "franklin-gothic-urw-cond", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin: 0 0 0.75rem;
+}
+
+.credits__text {
+    font-family: "franklin-gothic-urw-cond", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.credits__text strong {
+  font-weight: 600;
+}
+
+.credits__spaced {
+  margin-top: 1.5rem;
+}
+
+.credits__copyright {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
 }
