@@ -58,8 +58,9 @@ p {
 .hero__video-wrap {
   position: relative;
   width: 100%;
-  height: 55vh;
+  /* height: 55vh; */
   overflow: hidden;
+   aspect-ratio: 16 / 9;
 }
 
 .hero__video {
