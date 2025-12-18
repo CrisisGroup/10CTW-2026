@@ -16,7 +16,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -174,7 +174,7 @@ p {
 
 .map-scene {
   position: relative;
-  height: calc((var(--scene-steps, 2) + 1) * 100vh);
+  height: calc((var(--steps) + 1) * 100vh); /* sticky map flow space + step scroll space */
 }
 
 .map-scene__map {
@@ -186,17 +186,16 @@ p {
 
 .map-scene__steps {
   position: relative;
-  height: calc(var(--scene-steps, 2) * 100vh);
+  height: calc(var(--steps) * 100vh);
 }
 
-.map-scene .map-scene__steps > .step {
+/* each step consumes one viewport of scroll */
+.map-scene__steps > .step {
+  display: block;
   height: 100vh;
   width: 100%;
-  padding: 0;
   margin: 0;
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
+  padding: 0;
 }
 
 /* ---------- Copy section that follows the map ---------- */
