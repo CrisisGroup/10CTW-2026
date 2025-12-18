@@ -17,8 +17,8 @@ const chapterConfig = {
       {
         id: "world-order-1",
         camera: {
-          center: [33.37291, 25.14727],
-          zoom: 4.5,
+          center: [24.86328, 12.60993],
+          zoom: 5.7,
           pitch: 0,
           bearing: 0
         },
@@ -31,8 +31,8 @@ const chapterConfig = {
         camera: {
           center: [33.37291, 25.14727],
           zoom: 5.2,
-          pitch: 20,
-          bearing: -10
+          pitch: 0,
+          bearing: 0
         },
         opacityTransitions: [
           { layerKey: "sudan-country-labels", to: 1 }
@@ -46,7 +46,7 @@ const chapterConfig = {
 
 const map = new mapboxgl.Map({
   container: "map-world-order",
-  style: "mapbox://styles/daltonwb/cmj7ju0xv001y01ry823s1gmh",
+  style: "mapbox://styles/daltonwb/cmjb67ehv007h01s313c255hb",
   center: chapterConfig["world-order"].initialView.center,
   zoom: chapterConfig["world-order"].initialView.zoom,
   pitch: chapterConfig["world-order"].initialView.pitch,

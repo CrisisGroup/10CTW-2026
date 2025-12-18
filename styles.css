@@ -40,14 +40,17 @@ h6 {
 /* Section headers (h2) have accent color */
 h2 {
   color: #d48a77;
+  letter-spacing: .2rem;
+  font-size: 1.5rem;
 }
 
 /* Basic copy */
 p {
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 1.2rem;
   text-align: left;
   font-family: pt-serif, serif;
+  margin-top: 8px;
 }
 
 /* ---------- Hero (short editorial video header) ---------- */
@@ -88,7 +91,7 @@ p {
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-size: clamp(2.2rem, 3.6vw, 5.2rem);
   margin: 0 0 0.75rem;
   max-width: 18ch;
   color: #bd4f34;
@@ -102,14 +105,14 @@ p {
 
 .hero__byline {
   margin: 0 0 0.35rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   opacity: 0.9;
   font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
 .hero__dateline {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   opacity: 0.65;
   font-family: "franklin-gothic-urw-cond", sans-serif;
 }
@@ -124,8 +127,8 @@ p {
   position: relative;
   display: inline-block;
   margin-top: 2.25rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.2rem;
+  line-height: 1.7;
   max-width: 42rem;
   text-align: left;
   padding-left: 3rem;
@@ -186,7 +189,7 @@ p {
   height: calc(var(--scene-steps, 2) * 100vh);
 }
 
-.map-scene .map-scene__steps>.step {
+.map-scene .map-scene__steps > .step {
   height: 100vh;
   width: 100%;
   padding: 0;
@@ -201,7 +204,7 @@ p {
 .chapter-copy {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 1.5rem 5rem;
+  padding: 3rem 1.5rem 3rem;
 }
 
 /* ---------- Scrollytelling chapter ---------- */
@@ -285,6 +288,7 @@ p {
   opacity: 0.75;
   text-align: left;
   font-family: "franklin-gothic-urw", sans-serif;
+  line-height: 1.4;
 }
 
 /* ---------- Wide media that bleeds beyond the text column (centered) ---------- */
@@ -318,9 +322,6 @@ p {
   border-radius: 0;
 }
 
-
-
-
 /* ---------- Footer credits ---------- */
 
 .credits {
@@ -335,25 +336,26 @@ p {
 }
 
 .credits__label {
-  font-family: "franklin-gothic-urw-cond", sans-serif;
   font-size: 0.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.75;
   margin: 0 0 0.75rem;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
 .credits__text {
-  font-family: "franklin-gothic-urw-cond", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   opacity: 0.85;
   margin: 0;
+  font-family: "franklin-gothic-urw", sans-serif;
 }
 
 .credits__text strong {
   font-weight: 600;
   letter-spacing: 0.02em;
+  font-family: "franklin-gothic-urw", sans-serif;
 }
 
 .credits__spaced {
@@ -364,6 +366,7 @@ p {
   margin-top: 2.5rem;
   font-size: 0.85rem;
   opacity: 0.6;
+  font-family: "franklin-gothic-urw", sans-serif;
 }
 
 /* ---------- Side-by-side breakout media ---------- */
