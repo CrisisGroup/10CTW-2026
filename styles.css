@@ -325,13 +325,14 @@ p {
 
 .credits {
   background: var(--bg);
-  padding: 4rem 1.5rem 5rem;
+  padding: 4rem 0 5rem;            /* was: 4rem 1.5rem 5rem */
 }
 
 .credits__inner {
   max-width: 720px;
   margin: 0 auto;
-  text-align: center;
+  padding: 0 1.5rem;               /* move gutter here */
+  text-align: left;                /* optional, but matches main text */
 }
 
 .credits__label {
