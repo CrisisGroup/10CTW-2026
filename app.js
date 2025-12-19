@@ -3,7 +3,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
+    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
     initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
@@ -26,12 +26,12 @@ const scenes = {
       },
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
-        opacity: [{ layerKey: "refugee_data", to: 1 }]
+        opacity: [{ layerKey: "refugee_data", to: .4 }]
       },
       "world-order-3": {
         camera: {
-          center: [37.85272, 11.26549],
-          zoom: 5.5,
+          center: [39.77721, 8.63561],
+          zoom: 5,
           pitch: 0,
           bearing: 0
         },
@@ -52,7 +52,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
+    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
     initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -61,7 +61,9 @@ const scenes = {
       "bamako_dot": "bamako_dot",
       "bamako_label": "bamako_label",
       "abidjan": "abidjan",
+      "mali_road": "mali_road",
       "dakar": "dakar",
+      "city_labels_mali": "city_labels_mali",
       "other_label_mali": "other_label_mali",
       "atlantic": "atlantic",
       "mali_label": "mali_label",
@@ -78,8 +80,15 @@ const scenes = {
       },
       "scene-2-2": {
         camera: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
+        callback: ({ map }) => {
+          if (map.getLayer("mali_road") && map.getLayer("bamako_dot")) {
+            map.moveLayer("mali_road", "bamako_dot");
+          }
+        },
         opacity: [
+          { layerKey: "mali_road", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "other_label_mali", to: 1, transition: { duration: 900, delay: 0 } },
+          { layerKey: "city_labels_mali", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "dakar", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "abidjan", to: 1, transition: { duration: 900, delay: 250 } },
           { layerKey: "bamako_label", to: 1, transition: { duration: 900, delay: 0 } },
@@ -94,7 +103,7 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
+    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
     initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
       "arabian-sea": "arabian-sea",

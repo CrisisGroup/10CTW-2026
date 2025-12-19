@@ -42,6 +42,7 @@ h2 {
   color: #d48a77;
   letter-spacing: .15rem;
   font-size: 1.3rem;
+  margin-top: 3rem;
 }
 
 /* Basic copy */
@@ -104,7 +105,7 @@ a:hover {
 .hero__text {
   max-width: 1020px;
   margin: 0 auto;
-  padding: 6rem 0 0;
+  padding: 5rem 0 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -200,7 +201,7 @@ a:hover {
 .map-scene {
   position: relative;
   height: calc((var(--steps) + 1) * 100vh);
-  margin-top: 7rem;
+  margin: 7rem 0 4rem 0;
 }
 
 .map-scene::before,
@@ -290,33 +291,36 @@ a:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;  
 }
 
 .map-legend li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-family: 'franklin-gothic-urw-cond';
 }
 
 .swatch {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 2px;
   flex-shrink: 0;
 }
 
 .swatch.country {
-  background: #c95c3a;
+  background: #ffffff;
+  border-radius: 50%;
 }
 
 .swatch.city {
   background: #ffffff;
   border-radius: 50%;
-}
-
-.swatch.conflict {
-  background: #f15b37;
+  width: 4rem;
+  height: 4rem;
 }
 
 /* ---------- Copy section that follows the map ---------- */
@@ -405,7 +409,7 @@ a:hover {
 }
 
 .media-breakout figcaption {
-  margin-top: 0.75rem;
+  margin-top: 1.5rem;
   font-size: 0.95rem;
   opacity: 0.75;
   text-align: left;
@@ -417,16 +421,10 @@ a:hover {
 
 .wide-media {
   position: relative;
-
-  /* Center the box relative to the page, not the padded text column */
   left: 50%;
   transform: translateX(-50%);
-
-  /* Width rules: wide but not full-bleed */
   width: min(1100px, calc(100vw - 3rem));
-  /* 3rem ~= your 1.5rem L/R page padding */
   max-width: 1100px;
-
   margin-top: 2.25rem;
   margin-bottom: 0;
 }
@@ -504,7 +502,11 @@ a:hover {
   /* visual separation between panels */
 }
 
-.wide-media--split img,
+.wide-media--split img {
+  height: clamp(24rem, 60vh, 42rem);
+  object-fit: cover;
+}
+
 .wide-media--split video {
   width: 100%;
   height: auto;
