@@ -50,7 +50,7 @@ const scenes = {
   "scene-2": {
     container: "map-scene-2",
     style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
-    initialView: { center: [-5.23010, 12.53354], zoom: 5, pitch: 0, bearing: 0 },
+    initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
       "burkina-niger_label": "burkina-niger_label",
@@ -66,7 +66,7 @@ const scenes = {
     },
     steps: {
       "scene-2-1": {
-        camera: { center: [-5.23010, 12.53354], zoom: 5, pitch: 0, bearing: 0 },
+        camera: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "mali_label", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "Mali", to: 1, transition: { duration: 900, delay: 0 } },
@@ -74,7 +74,7 @@ const scenes = {
         ]
       },
       "scene-2-2": {
-        camera: { center: [-5.23010, 12.53354], zoom: 5, pitch: 0, bearing: 0 },
+        camera: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "other_label_mali", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "dakar", to: 1, transition: { duration: 900, delay: 0 } },
