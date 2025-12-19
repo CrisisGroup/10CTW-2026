@@ -69,16 +69,16 @@ p {
 }
 
 .hero__video {
-position: absolute;
-    top: 55%;
-    left: 50%;
-    min-width: 90%;
-    min-height: 90%;
-    width: 90%;
-    height: 90%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    padding: 10px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  min-width: 90%;
+  min-height: 90%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  padding: 10px;
 }
 
 @media (max-width: 425px) {
@@ -96,9 +96,9 @@ position: absolute;
 }
 
 .hero__text {
-  max-width: 720px;
+  max-width: 1020px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 0;
+  padding: 6rem 0 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -106,7 +106,7 @@ position: absolute;
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 3.6vw, 5.2rem);
+  font-size: clamp(2.8rem, 6vw, 8rem);
   margin: 0 0 0.75rem;
   max-width: 18ch;
   color: #bd4f34;
@@ -157,14 +157,14 @@ position: absolute;
 }
 
 .dropcap {
-    font-family: "franklin-gothic-urw-cond", sans-serif;
-    font-size: 4.8rem;
-    line-height: 0.85;
-    font-weight: 600;
-    pointer-events: none;
-    color: #d48a77;
-    float: left;
-    margin-right: 12px;
+  font-family: "franklin-gothic-urw-cond", sans-serif;
+  font-size: 4.8rem;
+  line-height: 0.85;
+  font-weight: 600;
+  pointer-events: none;
+  color: #d48a77;
+  float: left;
+  margin-right: 12px;
 }
 
 /* ---------- Intro sections ---------- */
@@ -187,7 +187,8 @@ position: absolute;
 
 .map-scene {
   position: relative;
-  height: calc((var(--steps) + 1) * 100vh); /* sticky map flow space + step scroll space */
+  height: calc((var(--steps) + 1) * 100vh);
+  /* sticky map flow space + step scroll space */
 }
 
 .map-scene__map {
@@ -203,7 +204,7 @@ position: absolute;
 }
 
 /* each step consumes one viewport of scroll */
-.map-scene__steps > .step {
+.map-scene__steps>.step {
   display: block;
   height: 100vh;
   width: 100%;
@@ -272,10 +273,12 @@ position: absolute;
 
 
 .hard-return {
-  margin: 2.25rem auto;   /* ✅ equal top/bottom spacing */
+  margin: 2.25rem auto;
+  /* ✅ equal top/bottom spacing */
   width: clamp(90px, 12vw, 140px);
   opacity: 0.9;
-  line-height: 0;         /* ✅ normalization */
+  line-height: 0;
+  /* ✅ normalization */
 }
 
 .hard-return svg {
@@ -338,14 +341,17 @@ position: absolute;
 
 .credits {
   background: var(--bg);
-  padding: 4rem 0 5rem;            /* was: 4rem 1.5rem 5rem */
+  padding: 4rem 0 5rem;
+  /* was: 4rem 1.5rem 5rem */
 }
 
 .credits__inner {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 1.5rem;               /* move gutter here */
-  text-align: left;                /* optional, but matches main text */
+  padding: 0 1.5rem;
+  /* move gutter here */
+  text-align: left;
+  /* optional, but matches main text */
 }
 
 .credits__label {
@@ -387,7 +393,8 @@ position: absolute;
 .wide-media--split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem; /* visual separation between panels */
+  gap: 1rem;
+  /* visual separation between panels */
 }
 
 .wide-media--split img,
