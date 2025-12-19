@@ -3,7 +3,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
+    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
     initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
@@ -36,6 +36,9 @@ const scenes = {
           bearing: 0
         },
         opacity: [
+          { layerKey: "refugee_data", to: 0 },
+          { layerKey: "sudan-countries", to: 0, transition: { duration: 900, delay: 0 } },
+          { layerKey: "sudan-country-labels", to: 0, transition: { duration: 900, delay: 0 } },
           { layerKey: "eth-city-labels", to: 1 },
           { layerKey: "eth-city-dots", to: 1 },
           { layerKey: "massawa-assab", to: 1 },
@@ -49,7 +52,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
+    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
     initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -91,7 +94,7 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
+    style: "mapbox://styles/daltonwb/cmjd5p7bf004801s80iif8c4d",
     initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
       "arabian-sea": "arabian-sea",
@@ -109,7 +112,7 @@ const scenes = {
     },
     steps: {
       "scene-3-1": {
-        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0  },
+        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "afghanistan", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "pakistan", to: 1, transition: { duration: 900, delay: 0 } },
@@ -122,7 +125,7 @@ const scenes = {
         ]
       },
       "scene-3-2": {
-        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0  },
+        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "pak-adm1", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "afgpak-border", to: 1, transition: { duration: 900, delay: 0 } },
@@ -223,7 +226,7 @@ function initScene(sceneId) {
 
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && activateStep(e.target)),
-      { threshold: 0.25 }
+      { threshold: 0.15 }
     );
 
     steps.forEach((s) => observer.observe(s));
