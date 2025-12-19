@@ -229,6 +229,7 @@ p {
   height: 100vh;
   width: 80vw;
   margin: 0 auto;
+  z-index: 1;
 }
 
 @media (max-width: 1440px) {
@@ -256,6 +257,77 @@ p {
   margin: 0;
   padding: 0;
 }
+
+/* ---------- Map legend ---------- */
+
+.map-scene__overlay {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  pointer-events: none;   /* overlay doesn't block scrolling */
+  z-index: 5;             /* higher than map */
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(6px);
+  color: var(--fg);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.map-scene[data-active-step="world-order-2"] 
+.map-legend[data-show-on="world-order-2"] {
+  opacity: 1;
+}
+
+
+.map-legend h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.map-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.map-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.swatch.country {
+  background: #c95c3a;
+}
+
+.swatch.city {
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.swatch.conflict {
+  background: #f15b37;
+}
+
+
 
 /* ---------- Copy section that follows the map ---------- */
 

@@ -63,7 +63,19 @@
 
         <!-- SCENE 1 -->
         <section class="map-scene" data-scene="world-order" style="--steps:3">
-            <div id="map-world-order" class="map-scene__map"></div>
+  <div class="map-scene__map" id="map-world-order"></div>
+
+  <div class="map-scene__overlay">
+    <div class="map-legend" data-show-on="world-order-2">
+      <h4>Legend</h4>
+      <ul>
+        <li><span class="swatch country"></span> Country boundary</li>
+        <li><span class="swatch city"></span> Major city</li>
+        <li><span class="swatch conflict"></span> Conflict zone</li>
+      </ul>
+    </div>
+  </div>
+
             <div class="map-scene__steps">
                 <div class="step" data-step="world-order-1"></div>
                 <div class="step" data-step="world-order-2"></div>
