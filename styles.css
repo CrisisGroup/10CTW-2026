@@ -202,14 +202,14 @@ a:hover {
   height: calc((var(--steps) + 1) * 100vh);
   margin-top: 7rem;
 }
-/* 
+
 .map-scene::before,
 .map-scene::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: 12rem;
+  height: 24rem;
   pointer-events: none;
   z-index: 10;
 }
@@ -226,7 +226,7 @@ a:hover {
   background: linear-gradient(to top,
       var(--bg) 0%,
       rgba(5, 5, 5, 0) 100%);
-} */
+} 
 
 .map-scene__map {
   position: sticky;
