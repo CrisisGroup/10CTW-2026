@@ -55,11 +55,12 @@ p {
 }
 
 a {
-  color: #bd4f34;
+  color: #d77c65;
+  font-weight: bold;
 }
 
 a:hover {
-  color: #d77c65;
+  color: #fff;
 }
 
 /* ---------- Hero (short editorial video header) ---------- */
@@ -446,8 +447,7 @@ a:hover {
 
 .credits {
   background: var(--bg);
-  padding: 4rem 0 5rem;
-  /* was: 4rem 1.5rem 5rem */
+  padding: 4rem 0 0;
 }
 
 .credits__inner {
@@ -488,7 +488,7 @@ a:hover {
 
 .credits__copyright {
   margin-top: 2.5rem;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   opacity: 0.6;
   font-family: "franklin-gothic-urw", sans-serif;
 }
