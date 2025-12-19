@@ -146,27 +146,46 @@ const scenes = {
   }
 };
 
-// Helper: tween any paint property (opacity etc.)
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function toNumber(v, fallback = 0) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 function animateLayerOpacity(map, layerId, target, duration = 700) {
   const props = getOpacityPaintProps(map, layerId);
-  if (!props) return;
+  if (!props || !map.getLayer(layerId)) return;
+
+  // Most Mapbox opacity props are 0..1
+  const tgt = clamp(toNumber(target, 0), 0, 1);
 
   const start = performance.now();
-  const initials = props.map((p) => ({ p, v: map.getPaintProperty(layerId, p) ?? 0 }));
+  const initials = props.map((p) => {
+    const current = map.getPaintProperty(layerId, p);
+    return { p, v: clamp(toNumber(current, 0), 0, 1) };
+  });
 
   function frame(now) {
-    const t = Math.min(1, (now - start) / duration);
+    // Layer might get removed / style swapped mid-animation
+    if (!map.getLayer(layerId)) return;
+
+    const t = clamp((now - start) / duration, 0, 1);
     const eased = 1 - Math.pow(1 - t, 3);
 
-    initials.forEach(({ p, v }) => {
-      map.setPaintProperty(layerId, p, v + (target - v) * eased);
-    });
+    for (const { p, v } of initials) {
+      const next = clamp(v + (tgt - v) * eased, 0, 1);
+      map.setPaintProperty(layerId, p, next);
+    }
 
     if (t < 1) requestAnimationFrame(frame);
   }
 
   requestAnimationFrame(frame);
 }
+
 
 function flyCamera(map, camera, duration = 1400) {
   map.flyTo({
