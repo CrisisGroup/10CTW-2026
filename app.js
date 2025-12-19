@@ -3,8 +3,8 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjbub4q6001101s86par7uz8",
-    initialView: { center: [33.37291, 25.14727], zoom: 4.5, pitch: 0, bearing: 0 },
+    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
+    initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
       "sudan-country-labels": "sudan-country-labels",
@@ -18,20 +18,20 @@ const scenes = {
     },
     steps: {
       "world-order-1": {
-        camera: { center: [33.37291, 25.14727], zoom: 4.5, pitch: 0, bearing: 0 },
+        camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "sudan-countries", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-country-labels", to: 1, transition: { duration: 900, delay: 250 } }
         ]
       },
       "world-order-2": {
-        camera: { center: [23.02624, 14.68850], zoom: 5.75, pitch: 0, bearing: 0 },
+        camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [{ layerKey: "refugee_data", to: 1 }]
       },
       "world-order-3": {
         camera: {
           center: [37.85272, 11.26549],
-          zoom: 5.8,
+          zoom: 5.5,
           pitch: 0,
           bearing: 0
         },
@@ -49,7 +49,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjbub4q6001101s86par7uz8",
+    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
     initialView: { center: [-5.23010, 12.53354], zoom: 5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -83,7 +83,7 @@ const scenes = {
           { layerKey: "bamako_dot", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "coup-belt", to: 1, transition: { duration: 900, delay: 250 } },
           { layerKey: "burkina-niger_label", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "niger_label", to: 1, transition: { duration: 900, delay: 250 } } 
+          { layerKey: "niger_label", to: 1, transition: { duration: 900, delay: 250 } }
         ]
       },
     }
@@ -91,44 +91,43 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjbub4q6001101s86par7uz8",
-    initialView: { center: [96.07952, 19.48481], zoom: 5.4, pitch: 0, bearing: 0 },
+    style: "mapbox://styles/daltonwb/cmjd26b2j000i01qv9hj9hf0f",
+    initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
-      "mandalay_label": "mandalay_label",
-      "mandalay_dot": "mandalay_dot",
-      "myanmar_label": "myanmar_label",
-      "naypyidaw_dot": "naypyidaw_dot",
-      "naypyidaw_label": "naypyidaw_label",
-      "road": "road",
-      "road-under": "road-under",
-      "shan_state": "shan_state",
-      "myanmar_border": "myanmar_border",
-      "myanmar": "myanmar"
+      "arabian-sea": "arabian-sea",
+      "clashes": "clashes",
+      "afgpak-border": "afgpak-border",
+      "airstrikes": "airstrikes",
+      "pak-adm1": "pak-adm1",
+      "afgh_label": "afgh_label",
+      "pakistan_label": "pakistan_label",
+      "city_dots": "city_dots",
+      "city_labels": "city_labels",
+      "other_label_afgh-pak": "other_label_afgh-pak",
+      "pakistan": "pakistan",
+      "afghanistan": "afghanistan"
     },
     steps: {
       "scene-3-1": {
-        camera: { center: [96.07952, 19.48481], zoom: 5.4, pitch: 0, bearing: 0 },
+        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0  },
         opacity: [
-          { layerKey: "myanmar_label", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "myanmar", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "myanmar_border", to: 1, transition: { duration: 900, delay: 250 } }
+          { layerKey: "afghanistan", to: 1, transition: { duration: 900, delay: 0 } },
+          { layerKey: "pakistan", to: 1, transition: { duration: 900, delay: 0 } },
+          { layerKey: "other_label_afgh-pak", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "city_labels", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "city_dots", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "pakistan_label", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "afgh_label", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "arabian-sea", to: 1, transition: { duration: 900, delay: 250 } },
         ]
       },
       "scene-3-2": {
-        camera: { center: [96.07952, 19.48481], zoom: 5.4, pitch: 0, bearing: 0 },
+        camera: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0  },
         opacity: [
-          { layerKey: "shan_state", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "road", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "road-under", to: 1, transition: { duration: 900, delay: 250 } }
-        ]
-      },
-      "scene-3-3": {
-        camera: { center: [96.07952, 19.48481], zoom: 5.4, pitch: 0, bearing: 0 },
-        opacity: [
-          { layerKey: "naypyidaw_label", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "naypyidaw_dot", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "mandalay_label", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "mandalay_dot", to: 1, transition: { duration: 900, delay: 250 } }
+          { layerKey: "pak-adm1", to: 1, transition: { duration: 900, delay: 0 } },
+          { layerKey: "afgpak-border", to: 1, transition: { duration: 900, delay: 0 } },
+          { layerKey: "airstrikes", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "clashes", to: 1, transition: { duration: 900, delay: 250 } }
         ]
       },
     }

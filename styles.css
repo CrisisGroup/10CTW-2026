@@ -40,8 +40,8 @@ h6 {
 /* Section headers (h2) have accent color */
 h2 {
   color: #d48a77;
-  letter-spacing: .2rem;
-  font-size: 1.5rem;
+  letter-spacing: .15rem;
+  font-size: 1.3rem;
 }
 
 /* Basic copy */
@@ -188,14 +188,56 @@ p {
 .map-scene {
   position: relative;
   height: calc((var(--steps) + 1) * 100vh);
-  /* sticky map flow space + step scroll space */
+  margin-top: 7rem;
+}
+
+.map-scene::before,
+.map-scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6rem;               /* feather depth */
+  pointer-events: none;
+  z-index: 10;
+}
+
+.map-scene::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--bg) 0%,
+    rgba(5,5,5,0) 100%
+  );
+}
+
+.map-scene::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(5,5,5,0) 100%
+  );
 }
 
 .map-scene__map {
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100vw;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 1440px) {
+  .map-scene__map {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-scene__map {
+    width: 100vw;
+  }
 }
 
 .map-scene__steps {
@@ -231,7 +273,7 @@ p {
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100vw;
+  width: 80vw;
 }
 
 .chapter__text {
