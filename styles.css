@@ -98,7 +98,7 @@ position: absolute;
 .hero__text {
   max-width: 720px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 3rem 1.5rem 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -146,7 +146,6 @@ position: absolute;
   line-height: 1.7;
   max-width: 42rem;
   text-align: left;
-  padding-left: 3rem;
 }
 
 .hero__intro::first-line {
@@ -158,15 +157,14 @@ position: absolute;
 }
 
 .dropcap {
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-family: "franklin-gothic-urw-cond", sans-serif;
-  font-size: 4.8rem;
-  line-height: 0.85;
-  font-weight: 600;
-  pointer-events: none;
-  color: #d48a77;
+    font-family: "franklin-gothic-urw-cond", sans-serif;
+    font-size: 4.8rem;
+    line-height: 0.85;
+    font-weight: 600;
+    pointer-events: none;
+    color: #d48a77;
+    float: left;
+    margin-right: 12px;
 }
 
 /* ---------- Intro sections ---------- */
