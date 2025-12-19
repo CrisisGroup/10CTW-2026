@@ -53,6 +53,14 @@ p {
   margin-top: 8px;
 }
 
+a {
+  color: #bd4f34;
+}
+
+a:hover {
+  color: #d77c65;
+}
+
 /* ---------- Hero (short editorial video header) ---------- */
 
 .hero {

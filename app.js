@@ -98,11 +98,11 @@ const scenes = {
       "clashes": "clashes",
       "afgpak-border": "afgpak-border",
       "airstrikes": "airstrikes",
-      "pak-adm1": "pak-adm1",
       "afgh_label": "afgh_label",
       "pakistan_label": "pakistan_label",
       "city_dots": "city_dots",
       "city_labels": "city_labels",
+      "pak-adm1": "pak-adm1",
       "other_label_afgh-pak": "other_label_afgh-pak",
       "pakistan": "pakistan",
       "afghanistan": "afghanistan"
