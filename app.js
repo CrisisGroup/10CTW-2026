@@ -26,7 +26,14 @@ const scenes = {
       },
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
-        opacity: [{ layerKey: "refugee_data", to: .4 }]
+        opacity: [{ layerKey: "refugee_data", to: .4 },
+        { layerKey: "eth-city-labels", to: 0 },
+        { layerKey: "eth-city-dots", to: 0 },
+        { layerKey: "massawa-assab", to: 0 },
+        { layerKey: "etter-labels", to: 0 },
+        { layerKey: "eth-provinces", to: 0 },
+        { layerKey: "ether-countries", to: 0 }
+        ]
       },
       "world-order-3": {
         camera: {
@@ -254,7 +261,7 @@ function initScene(sceneId) {
 
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && activateStep(e.target)),
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     );
 
     steps.forEach((s) => observer.observe(s));

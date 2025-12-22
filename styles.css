@@ -25,7 +25,6 @@ body {
   font-family: "PT Serif", serif;
 }
 
-/* Headings use Franklin Gothic from Typekit */
 h1,
 h2,
 h3,
@@ -37,15 +36,13 @@ h6 {
   text-transform: uppercase;
 }
 
-/* Section headers (h2) have accent color */
 h2 {
   color: #d48a77;
-  letter-spacing: .15rem;
+  letter-spacing: 0.15rem;
   font-size: 1.3rem;
   margin-top: 3rem;
 }
 
-/* Basic copy */
 p {
   line-height: 1.7;
   font-size: 1.2rem;
@@ -216,31 +213,6 @@ a:hover {
   margin: 7rem 0 4rem 0;
 }
 
-.map-scene::before,
-.map-scene::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 24rem;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.map-scene::before {
-  top: 0;
-  background: linear-gradient(to bottom,
-      var(--bg) 0%,
-      rgba(5, 5, 5, 0) 100%);
-}
-
-.map-scene::after {
-  bottom: 0;
-  background: linear-gradient(to top,
-      var(--bg) 0%,
-      rgba(5, 5, 5, 0) 100%);
-} 
-
 .map-scene__map {
   position: sticky;
   top: 0;
@@ -255,13 +227,62 @@ a:hover {
   height: calc(var(--steps) * 100vh);
 }
 
-/* each step consumes one viewport of scroll */
-.map-scene__steps>.step {
+.map-scene__steps > .step {
   display: block;
   height: 100vh;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.map-scene__steps > .step .map-legend {
+  position: sticky;              /* sticks within this step’s 100vh */
+  top: calc(100vh - 2rem);       /* push it to bottom area */
+  transform: translateY(-100%);  /* pull it up so it sits above bottom */
+  margin-left: auto;             /* right align */
+  margin-right: 2rem;
+  width: fit-content;
+
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(6px);
+  color: var(--fg);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  max-width: 420px;
+
+  pointer-events: none;          /* non-interactive, won’t meddle */
+  z-index: 20;                   /* above the map */
+}
+
+/* ---------- Map scene fades (top/bottom feathering) ---------- */
+
+.map-scene::before,
+.map-scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 24rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.map-scene::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--bg) 0%,
+    rgba(5, 5, 5, 0) 100%
+  );
+}
+
+.map-scene::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(5, 5, 5, 0) 100%
+  );
 }
 
 /* ---------- Map legend ---------- */
@@ -270,11 +291,12 @@ a:hover {
   position: sticky;
   top: 0;
   height: 100vh;
-  pointer-events: none;   /* overlay doesn't block scrolling */
-  z-index: 5;             /* higher than map */
+  inset: auto;
+  z-index: 30;
+  pointer-events: none;
 }
 
-.map-legend {
+/* .map-legend {
   position: absolute;
   bottom: 2rem;
   right: 2rem;
@@ -283,15 +305,10 @@ a:hover {
   color: var(--fg);
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-  pointer-events: auto;
-  opacity: 1;
   max-width: 420px;
-}
-
-.map-scene[data-active-step="world-order-2"] 
-.map-legend[data-show-on="world-order-2"] {
-  opacity: 1;
-}
+  pointer-events: none;
+  opacity: 0;
+} */
 
 .map-legend h2 {
   margin: 0 0 0.5rem;
@@ -306,7 +323,7 @@ a:hover {
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 1.25rem;  
+  gap: 1.25rem;
 }
 
 .map-legend li {
@@ -314,7 +331,7 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  font-family: 'franklin-gothic-urw', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif;
   line-height: 1.4;
 }
 
@@ -323,7 +340,7 @@ a:hover {
   height: 1rem;
   border-radius: 2px;
   flex-shrink: 0;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .swatch.country {
@@ -367,19 +384,16 @@ a:hover {
   padding: 4rem 1.5rem 6rem;
 }
 
-/* Individual step blocks (ONLY for chapter text steps) */
 .chapter .step {
   min-height: 80vh;
   padding: 3rem 0;
   border-left: 2px solid rgba(255, 255, 255, 0.1);
   padding-left: 1.25rem;
   opacity: 0.45;
-  transition:
-    opacity 200ms ease-out,
-    border-color 200ms ease-out;
+  transition: opacity 200ms ease-out, border-color 200ms ease-out;
 }
 
-.chapter .step+.step {
+.chapter .step + .step {
   margin-top: 1.5rem;
 }
 
@@ -397,14 +411,11 @@ a:hover {
 
 /* ---------- Hard return wedge ---------- */
 
-
 .hard-return {
   margin: 2.25rem auto;
-  /* ✅ equal top/bottom spacing */
   width: clamp(90px, 12vw, 140px);
   opacity: 0.9;
   line-height: 0;
-  /* ✅ normalization */
 }
 
 .hard-return svg {
@@ -451,10 +462,35 @@ a:hover {
   height: auto;
 }
 
-/* Optional: cinematic crop for videos/images */
 .wide-media video,
 .wide-media img {
   border-radius: 0;
+}
+
+/* ---------- Side-by-side breakout media ---------- */
+
+.wide-media--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.wide-media--split img {
+  height: clamp(24rem, 60vh, 42rem);
+  object-fit: cover;
+}
+
+.wide-media--split video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 700px) {
+  .wide-media--split {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Footer credits ---------- */
@@ -468,9 +504,7 @@ a:hover {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  /* move gutter here */
   text-align: left;
-  /* optional, but matches main text */
 }
 
 .credits__label {
@@ -505,36 +539,4 @@ a:hover {
   font-size: 0.95rem;
   opacity: 0.85;
   font-family: "franklin-gothic-urw", sans-serif;
-}
-
-/* ---------- Side-by-side breakout media ---------- */
-
-.wide-media--split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  /* visual separation between panels */
-}
-
-.wide-media--split img {
-  height: clamp(24rem, 60vh, 42rem);
-  object-fit: cover;
-}
-
-.wide-media--split video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Optional: enforce equal-height panels for video/image mixes */
-.wide-media--split video {
-  object-fit: cover;
-}
-
-/* Mobile fallback: stack vertically */
-@media (max-width: 700px) {
-  .wide-media--split {
-    grid-template-columns: 1fr;
-  }
 }
