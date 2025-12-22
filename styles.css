@@ -355,6 +355,14 @@ a:hover {
   height: 4rem;
 }
 
+.swatch.port {
+  background: rgb(0, 115, 103);
+  border-radius: 50%;
+  border: solid 2px rgb(128, 185, 179);
+  width: 1rem;
+  height: 1rem;
+}
+
 /* ---------- Copy section that follows the map ---------- */
 
 .chapter-copy {
@@ -535,7 +543,6 @@ a:hover {
 }
 
 .credits__copyright {
-  margin-top: 2.5rem;
   font-size: 0.95rem;
   opacity: 0.85;
   font-family: "franklin-gothic-urw", sans-serif;
