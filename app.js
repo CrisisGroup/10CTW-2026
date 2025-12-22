@@ -12,7 +12,7 @@ const scenes = {
       "eth-city-labels": "eth-city-labels",
       "eth-city-dots": "eth-city-dots",
       "massawa-assab": "massawa-assab",
-      "etter-labels": "etter-labels",
+      "ether-labels": "ether-labels",
       "eth-provinces": "eth-provinces",
       "ether-countries": "ether-countries"
     },
@@ -30,7 +30,7 @@ const scenes = {
         { layerKey: "eth-city-labels", to: 0 },
         { layerKey: "eth-city-dots", to: 0 },
         { layerKey: "massawa-assab", to: 0 },
-        { layerKey: "etter-labels", to: 0 },
+        { layerKey: "ether-labels", to: 0 },
         { layerKey: "eth-provinces", to: 0 },
         { layerKey: "ether-countries", to: 0 }
         ]
@@ -49,7 +49,7 @@ const scenes = {
           { layerKey: "eth-city-labels", to: 1 },
           { layerKey: "eth-city-dots", to: 1 },
           { layerKey: "massawa-assab", to: 1 },
-          { layerKey: "etter-labels", to: 1 },
+          { layerKey: "ether-labels", to: 1 },
           { layerKey: "eth-provinces", to: 1 },
           { layerKey: "ether-countries", to: 1 }
         ]
@@ -231,6 +231,15 @@ function initScene(sceneId) {
   function flyCamera(camera, duration = 1400) {
     map.flyTo({ ...camera, duration, essential: true });
   }
+
+  function updateWorldOrderLegend(activeStepId) {
+  const legend = document.getElementById("legend-world-order");
+  if (!legend) return;
+
+  // show only on world-order-2
+  legend.classList.toggle("is-visible", activeStepId === "world-order-2");
+}
+
 
   function activateStep(stepEl) {
     const stepId = stepEl.dataset.step;
