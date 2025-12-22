@@ -3,7 +3,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
+    style: "mapbox://styles/daltonwb/cmjhiavkm007601qv0gxwcuna",
     initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
@@ -62,7 +62,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
+    style: "mapbox://styles/daltonwb/cmjhiavkm007601qv0gxwcuna",
     initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -113,7 +113,7 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjd7spdl004k01ru6u2zca04",
+    style: "mapbox://styles/daltonwb/cmjhiavkm007601qv0gxwcuna",
     initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
       "arabian-sea": "arabian-sea",
@@ -210,11 +210,16 @@ function getOpacityPaintProps(map, layerId) {
   if (!layer) return null;
 
   switch (layer.type) {
-    case "fill": return ["fill-opacity"];
-    case "line": return ["line-opacity"];
-    case "circle": return ["circle-opacity"];
-    case "symbol": return ["text-opacity", "icon-opacity"];
-    default: return null;
+    case "fill":
+      return ["fill-opacity"];
+    case "line":
+      return ["line-opacity"];
+    case "circle":
+      return ["circle-opacity", "circle-stroke-opacity"];
+    case "symbol":
+      return ["text-opacity", "icon-opacity"];
+    default:
+      return null;
   }
 }
 
@@ -234,15 +239,6 @@ function initScene(sceneId) {
   function flyCamera(camera, duration = 1400) {
     map.flyTo({ ...camera, duration, essential: true });
   }
-
-  function updateWorldOrderLegend(activeStepId) {
-  const legend = document.getElementById("legend-world-order");
-  if (!legend) return;
-
-  // show only on world-order-2
-  legend.classList.toggle("is-visible", activeStepId === "world-order-2");
-}
-
 
   function activateStep(stepEl) {
     const stepId = stepEl.dataset.step;
