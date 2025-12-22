@@ -285,6 +285,7 @@ a:hover {
   border-radius: 0.5rem;
   pointer-events: auto;
   opacity: 1;
+  max-width: 420px;
 }
 
 .map-scene[data-active-step="world-order-2"] 
@@ -292,9 +293,9 @@ a:hover {
   opacity: 1;
 }
 
-.map-legend h4 {
+.map-legend h2 {
   margin: 0 0 0.5rem;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -313,7 +314,8 @@ a:hover {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  font-family: 'franklin-gothic-urw-cond';
+  font-family: 'franklin-gothic-urw', sans-serif;
+  line-height: 1.4;
 }
 
 .swatch {
@@ -321,6 +323,7 @@ a:hover {
   height: 1rem;
   border-radius: 2px;
   flex-shrink: 0;
+  opacity: .6;
 }
 
 .swatch.country {
@@ -340,7 +343,7 @@ a:hover {
 .chapter-copy {
   max-width: 720px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 3rem;
+  padding: 0 1.5rem 3rem;
 }
 
 /* ---------- Scrollytelling chapter ---------- */
@@ -417,7 +420,7 @@ a:hover {
 /* ---------- Breakout media (slightly wider than text column) ---------- */
 
 .media-breakout {
-  margin: 2.5rem 0;
+  margin: 7rem 0;
 }
 
 .media-breakout figcaption {
