@@ -135,7 +135,7 @@ a:hover {
 }
 
 .hero__byline {
-  margin: 1rem 5vw 0.5rem;
+  margin: 1rem 5vw 0.1rem;
   font-size: clamp(1.25rem, 3vw, 2rem);
   opacity: 0.9;
   font-family: "franklin-gothic-urw-cond", sans-serif;
@@ -148,7 +148,7 @@ a:hover {
   font-family: "franklin-gothic-urw-cond", sans-serif;
 }
 
-/* ---------- Hero Intro Dropcap Graf (Centered, No Forced Line Break) ---------- */
+/* ---------- Hero Intro Dropcap Graf ---------- */
 
 .hero__intro-wrap {
   text-align: center;
@@ -166,7 +166,7 @@ a:hover {
 
 @media (max-width: 425px) {
   .hero__intro {
-    padding: 0 1.5rem 0 1.5rem;
+    padding: 0 1.5rem;
   }
 }
 
@@ -235,25 +235,6 @@ a:hover {
   padding: 0;
 }
 
-.map-scene__steps > .step .map-legend {
-  position: sticky;              /* sticks within this step’s 100vh */
-  top: calc(100vh - 2rem);       /* push it to bottom area */
-  transform: translateY(-100%);  /* pull it up so it sits above bottom */
-  margin-left: auto;             /* right align */
-  margin-right: 2rem;
-  width: fit-content;
-
-  background: rgba(5, 5, 5, 0.75);
-  backdrop-filter: blur(6px);
-  color: var(--fg);
-  padding: 1rem 1.25rem;
-  border-radius: 0.5rem;
-  max-width: 420px;
-
-  pointer-events: none;          /* non-interactive, won’t meddle */
-  z-index: 20;                   /* above the map */
-}
-
 /* ---------- Map scene fades (top/bottom feathering) ---------- */
 
 .map-scene::before,
@@ -269,46 +250,55 @@ a:hover {
 
 .map-scene::before {
   top: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--bg) 0%,
-    rgba(5, 5, 5, 0) 100%
-  );
+  background: linear-gradient(to bottom, var(--bg) 0%, rgba(5, 5, 5, 0) 100%);
 }
 
 .map-scene::after {
   bottom: 0;
-  background: linear-gradient(
-    to top,
-    var(--bg) 0%,
-    rgba(5, 5, 5, 0) 100%
-  );
+  background: linear-gradient(to top, var(--bg) 0%, rgba(5, 5, 5, 0) 100%);
 }
 
-/* ---------- Map legend ---------- */
+/* ---------- Overlay host (optional; legends can live anywhere) ---------- */
 
 .map-scene__overlay {
   position: sticky;
   top: 0;
   height: 100vh;
-  inset: auto;
+  width: 100%;
   z-index: 30;
   pointer-events: none;
 }
 
-/* .map-legend {
-  position: absolute;
-  bottom: 2rem;
+/* ---------- Map legend (simple show/hide via jQuery) ---------- */
+
+.map-legend {
+  position: fixed;
   right: 2rem;
+  bottom: 2rem;
+  width: fit-content;
+  max-width: 420px;
+
   background: rgba(5, 5, 5, 0.75);
   backdrop-filter: blur(6px);
   color: var(--fg);
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-  max-width: 420px;
+
+  z-index: 40;
   pointer-events: none;
-  opacity: 0;
-} */
+
+  display: none; /* jQuery show/hide controls visibility */
+}
+
+@media (max-width: 700px) {
+  .map-legend {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+    width: auto;
+  }
+}
 
 .map-legend h2 {
   margin: 0 0 0.5rem;
@@ -436,7 +426,7 @@ a:hover {
   fill: #bd4f34;
 }
 
-/* ---------- Breakout media (slightly wider than text column) ---------- */
+/* ---------- Breakout media ---------- */
 
 .media-breakout {
   margin: 7rem 0;
@@ -451,7 +441,7 @@ a:hover {
   line-height: 1.4;
 }
 
-/* ---------- Wide media that bleeds beyond the text column (centered) ---------- */
+/* ---------- Wide media ---------- */
 
 .wide-media {
   position: relative;

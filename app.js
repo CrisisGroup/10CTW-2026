@@ -28,13 +28,14 @@ const scenes = {
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [{ layerKey: "refugee_data", to: .4 },
-        { layerKey: "eth-city-labels", to: 0 },
-        { layerKey: "eth-city-dots", to: 0 },
-        { layerKey: "massawa-assab", to: 0 },
-        { layerKey: "ether-labels", to: 0 },
-        { layerKey: "eth-provinces", to: 0 },
-        { layerKey: "ether-countries", to: 0 },
-        { layerKey: "admin-1-ethiopia", to: 0 }
+          { layerKey: "eth-city-labels", to: 0 },
+          { layerKey: "eth-city-dots", to: 0 },
+          { layerKey: "massawa-assab", to: 0 },
+          { layerKey: "ether-labels", to: 0 },
+          { layerKey: "eth-provinces", to: 0 },
+          { layerKey: "ether-countries", to: 0 },
+          { layerKey: "admin-1-ethiopia", to: 0 },
+          { layerKey: "sudan-country-labels", to: 0,}
         ]
       },
       "world-order-3": {
@@ -90,11 +91,6 @@ const scenes = {
       },
       "scene-2-2": {
         camera: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
-        callback: ({ map }) => {
-          if (map.getLayer("mali_road") && map.getLayer("bamako_dot")) {
-            map.moveLayer("mali_road", "bamako_dot");
-          }
-        },
         opacity: [
           { layerKey: "mali_road", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "other_label_mali", to: 1, transition: { duration: 900, delay: 0 } },
@@ -223,8 +219,33 @@ function getOpacityPaintProps(map, layerId) {
   }
 }
 
+// Put this ONCE, near the top (global scope)
+function hideAllLegends() {
+  // since all legends use .map-legend, this kills anything currently showing
+  $(".map-legend").stop(true, true).hide();
+}
+
+function setLegendForStep(stepId) {
+  // Always start clean to prevent "sticky leftovers"
+  hideAllLegends();
+
+  if (!stepId) return;
+
+  // WORLD ORDER
+  if (stepId === "world-order-2") {
+    $("#malilegend").stop(true, true).fadeIn(200);
+  } else if (stepId === "world-order-3") {
+    $("#malilegend2").stop(true, true).fadeIn(200);
+  }
+
+  // Later: add other scenes here, e.g.
+  // if (stepId === "scene-2-2") $("#scene2legend").stop(true,true).fadeIn(200);
+  // if (stepId === "scene-3-1") $("#scene3legend").stop(true,true).fadeIn(200);
+}
+
 function initScene(sceneId) {
   const cfg = scenes[sceneId];
+
   const map = new mapboxgl.Map({
     container: cfg.container,
     style: cfg.style,
@@ -243,6 +264,10 @@ function initScene(sceneId) {
   function activateStep(stepEl) {
     const stepId = stepEl.dataset.step;
     console.log("ACTIVATE", stepId);
+
+    // ✅ legend toggles happen regardless of whether cfg.steps has content
+    setLegendForStep(stepId);
+
     const step = cfg.steps[stepId];
     if (!step) return;
 
@@ -258,25 +283,53 @@ function initScene(sceneId) {
   }
 
   map.on("load", () => {
+    // init all opacities
     Object.values(cfg.layers).forEach((layerId) => {
       const props = getOpacityPaintProps(map, layerId);
       if (!props) return;
       props.forEach((p) => map.setPaintProperty(layerId, p, 0));
     });
 
+    // IMPORTANT: this must match your markup's data-scene attribute values
     const sceneEl = document.querySelector(`.map-scene[data-scene="${sceneId}"]`);
-    const steps = sceneEl?.querySelectorAll(".map-scene__steps > .step") ?? [];
+    const steps = sceneEl ? sceneEl.querySelectorAll(".map-scene__steps > .step") : [];
 
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && activateStep(e.target)),
+    // Step observer: activates a step when it enters
+    const stepObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) activateStep(e.target);
+        });
+      },
       { threshold: 0.2 }
     );
+    steps.forEach((s) => stepObserver.observe(s));
 
-    steps.forEach((s) => observer.observe(s));
+    // Scene observer: hides legends when THIS scene leaves the viewport
+    if (sceneEl) {
+  const sceneObserver = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      // Hide as soon as the scene is effectively out of view
+      if (!entry.isIntersecting) {
+        hideAllLegends();
+      }
+    },
+    {
+      threshold: 0,
+      // Shrink the observer's viewport so "leaving" happens earlier.
+      // Top/bottom negative margins mean: consider it out sooner.
+      rootMargin: "-100% 0px -15% 0px"
+    }
+  );
+
+  sceneObserver.observe(sceneEl);
+}
   });
-
 
   return map;
 }
 
 Object.keys(scenes).forEach(initScene);
+
