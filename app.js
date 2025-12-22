@@ -14,7 +14,8 @@ const scenes = {
       "massawa-assab": "massawa-assab",
       "ether-labels": "ether-labels",
       "eth-provinces": "eth-provinces",
-      "ether-countries": "ether-countries"
+      "ether-countries": "ether-countries",
+      "admin-1-ethiopia": "admin-1-ethiopia"
     },
     steps: {
       "world-order-1": {
@@ -32,7 +33,8 @@ const scenes = {
         { layerKey: "massawa-assab", to: 0 },
         { layerKey: "ether-labels", to: 0 },
         { layerKey: "eth-provinces", to: 0 },
-        { layerKey: "ether-countries", to: 0 }
+        { layerKey: "ether-countries", to: 0 },
+        { layerKey: "admin-1-ethiopia", to: 0 }
         ]
       },
       "world-order-3": {
@@ -51,7 +53,8 @@ const scenes = {
           { layerKey: "massawa-assab", to: 1 },
           { layerKey: "ether-labels", to: 1 },
           { layerKey: "eth-provinces", to: 1 },
-          { layerKey: "ether-countries", to: 1 }
+          { layerKey: "ether-countries", to: 1 },
+          { layerKey: "admin-1-ethiopia", to: 1 }
         ]
       }
     }
