@@ -15,14 +15,18 @@ const scenes = {
       "ether-labels": "ether-labels",
       "eth-provinces": "eth-provinces",
       "ether-countries": "ether-countries",
-      "admin-1-ethiopia": "admin-1-ethiopia"
+      "admin-1-ethiopia": "admin-1-ethiopia",
+      "rsf": "rsf",
+      "saf": "saf"
     },
     steps: {
       "world-order-1": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [
           { layerKey: "sudan-countries", to: 1, transition: { duration: 900, delay: 0 } },
-          { layerKey: "sudan-country-labels", to: 1, transition: { duration: 900, delay: 250 } }
+          { layerKey: "sudan-country-labels", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "rsf", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "saf", to: 1, transition: { duration: 900, delay: 250 } }
         ]
       },
       "world-order-2": {
