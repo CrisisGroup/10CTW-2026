@@ -28,14 +28,14 @@ const scenes = {
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [{ layerKey: "refugee_data", to: .4 },
-          { layerKey: "eth-city-labels", to: 0 },
-          { layerKey: "eth-city-dots", to: 0 },
-          { layerKey: "massawa-assab", to: 0 },
-          { layerKey: "ether-labels", to: 0 },
-          { layerKey: "eth-provinces", to: 0 },
-          { layerKey: "ether-countries", to: 0 },
-          { layerKey: "admin-1-ethiopia", to: 0 },
-          { layerKey: "sudan-country-labels", to: 0,}
+        { layerKey: "eth-city-labels", to: 0 },
+        { layerKey: "eth-city-dots", to: 0 },
+        { layerKey: "massawa-assab", to: 0 },
+        { layerKey: "ether-labels", to: 0 },
+        { layerKey: "eth-provinces", to: 0 },
+        { layerKey: "ether-countries", to: 0 },
+        { layerKey: "admin-1-ethiopia", to: 0 },
+        { layerKey: "sudan-country-labels", to: 0, }
         ]
       },
       "world-order-3": {
@@ -238,6 +238,18 @@ function setLegendForStep(stepId) {
     $("#malilegend2").stop(true, true).fadeIn(200);
   }
 
+  if (stepId === "scene-2-2") {
+    $("#wafricalegend").stop(true, true).fadeIn(200);
+  } else if (stepId === "scene-2-2") {
+    $("#wafricalegend").stop(true, true).fadeIn(200);
+  }
+
+    if (stepId === "scene-3-2") {
+    $("#afgpaklegend").stop(true, true).fadeIn(200);
+  } else if (stepId === "scene-3-2") {
+    $("#afgpaklegend").stop(true, true).fadeIn(200);
+  }
+
   // Later: add other scenes here, e.g.
   // if (stepId === "scene-2-2") $("#scene2legend").stop(true,true).fadeIn(200);
   // if (stepId === "scene-3-1") $("#scene3legend").stop(true,true).fadeIn(200);
@@ -307,25 +319,25 @@ function initScene(sceneId) {
 
     // Scene observer: hides legends when THIS scene leaves the viewport
     if (sceneEl) {
-  const sceneObserver = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
+      const sceneObserver = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
 
-      // Hide as soon as the scene is effectively out of view
-      if (!entry.isIntersecting) {
-        hideAllLegends();
-      }
-    },
-    {
-      threshold: 0,
-      // Shrink the observer's viewport so "leaving" happens earlier.
-      // Top/bottom negative margins mean: consider it out sooner.
-      rootMargin: "-100% 0px -15% 0px"
+          // Hide as soon as the scene is effectively out of view
+          if (!entry.isIntersecting) {
+            hideAllLegends();
+          }
+        },
+        {
+          threshold: 0,
+          // Shrink the observer's viewport so "leaving" happens earlier.
+          // Top/bottom negative margins mean: consider it out sooner.
+          rootMargin: "-100% 0px -15% 0px"
+        }
+      );
+
+      sceneObserver.observe(sceneEl);
     }
-  );
-
-  sceneObserver.observe(sceneEl);
-}
   });
 
   return map;
