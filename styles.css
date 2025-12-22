@@ -406,6 +406,25 @@ a:hover {
   background-image: url("media/green-light-clash.svg");
 }
 
+/* Square swatch base */
+.swatch.square {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2px;   /* slight rounding to match other swatches */
+  opacity: 1;           /* solid color */
+}
+
+/* Dark teal */
+.swatch.square.dark-teal {
+  background: rgb(0, 115, 103);
+}
+
+/* Light teal */
+.swatch.square.light-teal {
+  background: rgb(140, 192, 187);
+}
+
+
 
 /* ---------- Copy section that follows the map ---------- */
 

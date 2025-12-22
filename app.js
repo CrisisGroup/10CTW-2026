@@ -39,7 +39,9 @@ const scenes = {
         { layerKey: "eth-provinces", to: 0 },
         { layerKey: "ether-countries", to: 0 },
         { layerKey: "admin-1-ethiopia", to: 0 },
-        { layerKey: "sudan-country-labels", to: 0, }
+        { layerKey: "sudan-country-labels", to: 0, },
+        { layerKey: "rsf", to: 0,  },
+          { layerKey: "saf", to: 0, }
         ]
       },
       "world-order-3": {
@@ -236,6 +238,13 @@ function setLegendForStep(stepId) {
   if (!stepId) return;
 
   // WORLD ORDER
+
+  if (stepId === "world-order-1") {
+    $("#malilegend0").stop(true, true).fadeIn(200);
+  } else if (stepId === "world-order-1") {
+    $("#malilegend0").stop(true, true).fadeIn(200);
+  }
+
   if (stepId === "world-order-2") {
     $("#malilegend").stop(true, true).fadeIn(200);
   } else if (stepId === "world-order-3") {
