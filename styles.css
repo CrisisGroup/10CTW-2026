@@ -146,6 +146,7 @@ a:hover {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   opacity: 0.65;
   font-family: "franklin-gothic-urw-cond", sans-serif;
+  letter-spacing: 0.05rem;
 }
 
 /* ---------- Hero Intro Dropcap Graf ---------- */
