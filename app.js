@@ -3,13 +3,14 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjirz4lc00a701qqaoat3ohj",
+    style: "mapbox://styles/daltonwb/cmjisa6rl00a901qqaah58a1p",
     initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
       "sudan-country-labels": "sudan-country-labels",
       "sudan-city-labels": "sudan-city-labels",
       "sudan-city-dots": "sudan-city-dots",
+      "sudan-country": "sudan-country",
       "refugee_data": "refugee_data",
       "eth-city-labels": "eth-city-labels",
       "eth-city-dots": "eth-city-dots",
@@ -27,15 +28,15 @@ const scenes = {
         opacity: [
           { layerKey: "sudan-countries", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-country-labels", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "rsf", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "saf", to: 1, transition: { duration: 900, delay: 250 } }
+          { layerKey: "rsf", to: 1, transition: { duration: 900, delay: 250 } }
         ]
       },
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [{ layerKey: "refugee_data", to: .4 },
-          { layerKey: "sudan-city-labels", to: 1 },
-          { layerKey: "sudan-city-dots", to: 1 },
+        { layerKey: "sudan-country", to: 1 },
+        { layerKey: "sudan-city-labels", to: 1 },
+        { layerKey: "sudan-city-dots", to: 1 },
         { layerKey: "eth-city-labels", to: 0 },
         { layerKey: "eth-city-dots", to: 0 },
         { layerKey: "massawa-assab", to: 0 },
@@ -44,8 +45,7 @@ const scenes = {
         { layerKey: "ether-countries", to: 0 },
         { layerKey: "admin-1-ethiopia", to: 0 },
         { layerKey: "sudan-country-labels", to: 0, },
-        { layerKey: "rsf", to: 0,  },
-          { layerKey: "saf", to: 0, }
+        { layerKey: "rsf", to: 0, }
         ]
       },
       "world-order-3": {
@@ -57,6 +57,7 @@ const scenes = {
         },
         opacity: [
           { layerKey: "refugee_data", to: 0 },
+          { layerKey: "sudan-country", to: 0 },
           { layerKey: "sudan-countries", to: 0, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-country-labels", to: 0, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-city-labels", to: 0 },
@@ -75,7 +76,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjirz4lc00a701qqaoat3ohj",
+    style: "mapbox://styles/daltonwb/cmjisa6rl00a901qqaah58a1p",
     initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -121,7 +122,7 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjirz4lc00a701qqaoat3ohj",
+    style: "mapbox://styles/daltonwb/cmjisa6rl00a901qqaah58a1p",
     initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
       "arabian-sea": "arabian-sea",
@@ -263,7 +264,7 @@ function setLegendForStep(stepId) {
     $("#wafricalegend").stop(true, true).fadeIn(200);
   }
 
-    if (stepId === "scene-3-2") {
+  if (stepId === "scene-3-2") {
     $("#afgpaklegend").stop(true, true).fadeIn(200);
   } else if (stepId === "scene-3-2") {
     $("#afgpaklegend").stop(true, true).fadeIn(200);
