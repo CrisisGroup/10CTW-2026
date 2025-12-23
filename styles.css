@@ -142,7 +142,7 @@ a:hover {
 }
 
 .hero__dateline {
-  margin: 0 5vw;
+  margin: 0 5vw 2rem;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   opacity: 0.65;
   font-family: "franklin-gothic-urw-cond", sans-serif;
@@ -276,18 +276,15 @@ a:hover {
   right: 2rem;
   bottom: 2rem;
   width: fit-content;
-  max-width: 420px;
-
+  max-width: 540px;
   background: rgba(5, 5, 5, 0.75);
   backdrop-filter: blur(6px);
   color: var(--fg);
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-
   z-index: 40;
   pointer-events: none;
-
-  display: none; /* jQuery show/hide controls visibility */
+  display: none; 
 }
 
 @media (max-width: 700px) {
@@ -502,7 +499,7 @@ a:hover {
 /* ---------- Breakout media ---------- */
 
 .media-breakout {
-  margin: 7rem 0;
+  margin: 7rem 0 0;
 }
 
 .media-breakout figcaption {

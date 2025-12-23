@@ -8,6 +8,8 @@ const scenes = {
     layers: {
       "sudan-countries": "sudan-countries",
       "sudan-country-labels": "sudan-country-labels",
+      "sudan-city-labels": "sudan-city-labels",
+      "sudan-city-dots": "sudan-city-dots",
       "refugee_data": "refugee_data",
       "eth-city-labels": "eth-city-labels",
       "eth-city-dots": "eth-city-dots",
@@ -32,6 +34,8 @@ const scenes = {
       "world-order-2": {
         camera: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
         opacity: [{ layerKey: "refugee_data", to: .4 },
+          { layerKey: "sudan-city-labels", to: 1 },
+          { layerKey: "sudan-city-dots", to: 1 },
         { layerKey: "eth-city-labels", to: 0 },
         { layerKey: "eth-city-dots", to: 0 },
         { layerKey: "massawa-assab", to: 0 },
@@ -55,6 +59,8 @@ const scenes = {
           { layerKey: "refugee_data", to: 0 },
           { layerKey: "sudan-countries", to: 0, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-country-labels", to: 0, transition: { duration: 900, delay: 0 } },
+          { layerKey: "sudan-city-labels", to: 0 },
+          { layerKey: "sudan-city-dots", to: 0 },
           { layerKey: "eth-city-labels", to: 1 },
           { layerKey: "eth-city-dots", to: 1 },
           { layerKey: "massawa-assab", to: 1 },
@@ -263,9 +269,6 @@ function setLegendForStep(stepId) {
     $("#afgpaklegend").stop(true, true).fadeIn(200);
   }
 
-  // Later: add other scenes here, e.g.
-  // if (stepId === "scene-2-2") $("#scene2legend").stop(true,true).fadeIn(200);
-  // if (stepId === "scene-3-1") $("#scene3legend").stop(true,true).fadeIn(200);
 }
 
 function initScene(sceneId) {
