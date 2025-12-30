@@ -60,6 +60,13 @@ a:hover {
   color: #fff;
 }
 
+a.readmore {
+  font-family: "franklin-gothic-urw", sans-serif;
+  text-underline-offset: 4px;
+  text-decoration-style: dotted;
+  font-size: 1rem;
+}
+
 /* ---------- Hero (short editorial video header) ---------- */
 
 .hero {

@@ -2,25 +2,92 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Ten Conflicts to Watch</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Basic document metadata -->
+    <meta charset="utf-8" />
+    <title>Ten Conflicts to Watch in 2026 | International Crisis Group</title>
 
-    <!-- Mapbox CSS -->
+    <meta name="description"
+        content="An interactive visual explainer from the International Crisis Group examining ten conflicts likely to shape global stability in 2026." />
+    <meta name="author" content="International Crisis Group" />
+
+    <!-- Viewport / mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050505" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://crisisgroup.org/visual-explainers/ten-conflicts-2026/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ten Conflicts to Watch in 2026" />
+    <meta property="og:description"
+        content="An interactive visual explainer from the International Crisis Group examining ten conflicts likely to shape global stability in 2026." />
+    <meta property="og:url" content="https://crisisgroup.org/visual-explainers/ten-conflicts-2026/" />
+    <meta property="og:image"
+        content="https://crisisgroup.org/sites/default/files/styles/social_large/public/2026-01/ten-conflicts-2026-social.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="International Crisis Group" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ten Conflicts to Watch in 2026" />
+    <meta name="twitter:description"
+        content="An interactive visual explainer from the International Crisis Group examining ten conflicts likely to shape global stability in 2026." />
+    <meta name="twitter:image"
+        content="https://crisisgroup.org/sites/default/files/styles/social_large/public/2026-01/ten-conflicts-2026-social.jpg" />
+    <meta name="twitter:site" content="@CrisisGroup" />
+
+    <!-- iOS / PWA niceties -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Favicons (adjust paths if needed for Drupal theme) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/icg/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/icg/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/icg/apple-touch-icon.png" />
+
+    <!-- Performance preconnects -->
+    <link rel="preconnect" href="https://api.mapbox.com" />
+    <link rel="preconnect" href="https://events.mapbox.com" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+
+    <!-- Adobe Typekit -->
+    <link rel="stylesheet" href="https://use.typekit.net/amu4upa.css" />
+
+    <!-- Mapbox CSS (v3.8.0 as per your setup) -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet" />
 
-    <!-- Adobe Typekit (replace XXXXXXX with your kit ID) -->
-    <link rel="stylesheet" href="https://use.typekit.net/amu4upa.css">
-
-    <!-- Your external stylesheet -->
+    <!-- App styles -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- jQuery (used for legend toggles) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer>
+        </script>
+
+    <!-- Mapbox JS (deferred so it doesn't block paint) -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js" defer>
+    </script>
+
+    <!-- App JS -->
+    <script src="app.js" defer></script>
+
+    <!-- Prevent flash on first paint -->
+    <style>
+        html {
+            background-color: #050505;
+        }
+    </style>
 </head>
+
 
 <body>
     <!-- Fullscreen hero with autoplay video -->
     <header class="hero">
         <div class="hero__video-wrap">
-            <video class="hero__video" autoplay muted loop playsinline>
+            <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+                poster="media/headerposter.jpg">
                 <source src="media/ten-conflicts-hero.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -49,27 +116,37 @@
                     new energy to peacemaking, after years in which diplomatic efforts to end wars had been flailing.
                 </p>
             </div>
-            <section class="chapter-copy chapter-copy--world-order">                
-                <p>But Trump has not calmed the global turmoil he decried on the campaign trail –
-                    if anything, he has made it worse. His deals have brought respite to some battlefields but no
-                    genuine peace anywhere. Meanwhile, his lawlessness and spheres-of-influence politics have given
-                    licence to other states tempted by adventurism.</p>
-                <p>The year ahead thus seems likely to be as bloody as the one drawing to a close.
-                    Here are the International Crisis Group’s Ten Conflicts to Watch in 2026.</p>
-                
-            </section>
+
 
         </div>
     </header>
 
     <main>
 
+        <section class="chapter-copy chapter-copy--world-order">
+            <p>But Trump has not calmed the global turmoil he decried on the campaign trail –
+                if anything, he has made it worse. His deals have brought respite to some battlefields but no
+                genuine peace anywhere. Meanwhile, his lawlessness and spheres-of-influence politics have given
+                licence to other states tempted by adventurism.</p>
+            <p>The year ahead thus seems likely to be as bloody as the one drawing to a close.
+                Here are the International Crisis Group’s <a href=<a
+                    href="https://www.crisisgroup.org/global/10-conflicts-watch-2026" target="_blank">Ten Conflicts to
+                    Watch in 2026</a>.</p>
+        </section>
+
+        <div class="hard-return">
+            <svg width="120" height="18" viewBox="0 0 120 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- flat left edge, point on the right -->
+                <polygon points="0,0 0,18 120,9" />
+            </svg>
+        </div>
+
         <section class="chapter-copy">
 
             <figure class="media-breakout">
                 <div class="wide-media">
                     <video src="media/vz.mp4" autoplay muted loop playsinline preload="metadata"
-                        poster="media/example.jpg"></video>
+                        poster="media/vzposter.jpg"></video>
                 </div>
 
                 <figcaption>Wide shot aircraft carrier USS Gerald R. Ford sailing in the North Sea during NATO Neptune
@@ -83,6 +160,8 @@
             <p>If Maduro, who has weathered economic pressure for years, does not bend, an attempt at ousting him by
                 force may be in the offing. But military action is more likely to go wrong than not. It could sow chaos,
                 triggering refugee flight and protracted conflict. </p>
+            <p><a class="readmore" href="https://www.crisisgroup.org/global/10-conflicts-watch-2026#venezuela" target="_blank">Read
+                    More</a></p>
 
         </section>
 
@@ -116,7 +195,7 @@
                 <ul>
                     <li>
                         <span class="swatch square dark-teal"></span>
-                        SAF
+                        Army
                     </li>
                     <li>
                         <span class="swatch square light-teal"></span>
@@ -126,7 +205,7 @@
 
             </div>
 
-            <div id="malilegend" class="map-legend" style="display:none;">
+            <div id="malilegend" class="map-legend" style="display:none;max-width:500px;">
                 <h2>Total newly arrived refugees/asylum seekers and refugee returnees</h2>
                 <ul>
                     <li><span class="swatch country"></span> Approximately 500 people</li>
@@ -208,7 +287,7 @@
             <figure class="media-breakout">
                 <div class="wide-media">
                     <video src="media/ua.mp4" autoplay muted loop playsinline preload="metadata"
-                        poster="media/example.jpg"></video>
+                        poster="media/uaposter.jpg"></video>
 
                 </div>
 
@@ -242,7 +321,7 @@
             <figure class="media-breakout">
                 <div class="wide-media">
                     <video src="media/sy.mp4" autoplay muted loop playsinline preload="metadata"
-                        poster="media/example.jpg"></video>
+                        poster="media/syposter.jpg"></video>
 
                 </div>
 
@@ -274,7 +353,7 @@
             <figure class="media-breakout">
                 <div class="wide-media">
                     <video src="media/ps.mp4" autoplay muted loop playsinline preload="metadata"
-                        poster="media/example.jpg"></video>
+                        poster="media/psposter.jpg"></video>
 
                 </div>
 
@@ -421,7 +500,8 @@
         </div>
     </footer>
 
-    <img src="media/icg30.svg" style="padding-bottom: 3rem;" />
+    <a href="https://www.crisisgroup.org/" target="_blank"><img src="media/icg30.svg"
+            style="padding-bottom: 3rem;" /></a>
 
 
     <!-- Mapbox JS + your app logic -->
