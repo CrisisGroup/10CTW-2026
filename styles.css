@@ -132,7 +132,7 @@ a.readmore {
 }
 
 .hero__subhed {
-  margin: 1rem 1vw 2rem;
+  margin: 1rem 7vw 2rem;
   font-size: clamp(1.12rem, 3vw, 1.8rem);
   opacity: 0.9;
   font-family: "PT Serif", serif;
