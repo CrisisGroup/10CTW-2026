@@ -3,7 +3,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAO
 const scenes = {
   "world-order": {
     container: "map-world-order",
-    style: "mapbox://styles/daltonwb/cmjitedgd002201qyd49p16j1",
+    style: "mapbox://styles/daltonwb/cmjssev8d00lk01qq2zej5okt",
     initialView: { center: [30.08953, 13.76454], zoom: 4.3, pitch: 0, bearing: 0 },
     layers: {
       "sudan-countries": "sudan-countries",
@@ -77,7 +77,7 @@ const scenes = {
 
   "scene-2": {
     container: "map-scene-2",
-    style: "mapbox://styles/daltonwb/cmjitedgd002201qyd49p16j1",
+    style: "mapbox://styles/daltonwb/cmjssev8d00lk01qq2zej5okt",
     initialView: { center: [-5.23010, 12.53354], zoom: 4.5, pitch: 0, bearing: 0 },
     layers: {
       "niger_label": "niger_label",
@@ -123,7 +123,7 @@ const scenes = {
 
   "scene-3": {
     container: "map-scene-3",
-    style: "mapbox://styles/daltonwb/cmjitedgd002201qyd49p16j1",
+    style: "mapbox://styles/daltonwb/cmjssev8d00lk01qq2zej5okt",
     initialView: { center: [67.83852, 31.68396], zoom: 5.1, pitch: 0, bearing: 0 },
     layers: {
       "arabian-sea": "arabian-sea",
