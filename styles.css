@@ -132,7 +132,7 @@ a.readmore {
 }
 
 .hero__subhed {
-  margin: 1rem 7vw 2rem;
+  margin: 1rem 3vw 2rem;
   font-size: clamp(1.12rem, 3vw, 1.8rem);
   opacity: 0.9;
   font-family: "PT Serif", serif;
@@ -140,6 +140,12 @@ a.readmore {
   line-height: 1.4;
   max-width: 90rem;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .hero__subhed {
+    margin: 1rem 7vw 2rem;
+  }
 }
 
 .hero__byline {
@@ -252,7 +258,7 @@ a.readmore {
   height: calc(var(--steps) * 100vh);
 }
 
-.map-scene__steps > .step {
+.map-scene__steps>.step {
   display: block;
   height: 100vh;
   width: 100%;
@@ -309,7 +315,7 @@ a.readmore {
   border-radius: 0.5rem;
   z-index: 40;
   pointer-events: none;
-  display: none; 
+  display: none;
 }
 
 @media (max-width: 700px) {
@@ -376,10 +382,14 @@ a.readmore {
 }
 
 .swatch.road {
-  width: 2.25rem;     /* length of the lines */
-  height: 0.9rem;     /* overall swatch box height */
-  opacity: 1;         /* override base swatch opacity */
-  border-radius: 0;   /* keep it crisp */
+  width: 2.25rem;
+  /* length of the lines */
+  height: 0.9rem;
+  /* overall swatch box height */
+  opacity: 1;
+  /* override base swatch opacity */
+  border-radius: 0;
+  /* keep it crisp */
   background: none;
   position: relative;
 }
@@ -391,9 +401,11 @@ a.readmore {
   position: absolute;
   left: 0;
   right: 0;
-  height: 2px;        /* line thickness */
+  height: 2px;
+  /* line thickness */
   background: #fff;
-  border-radius: 2px; /* tiny rounding looks nice */
+  border-radius: 2px;
+  /* tiny rounding looks nice */
 }
 
 /* top line */
@@ -411,11 +423,13 @@ a.readmore {
 .swatch.clash-light {
   width: 1.25rem;
   height: 1.25rem;
-  opacity: 1;                 /* SVGs already have their own visual weight */
+  opacity: 1;
+  /* SVGs already have their own visual weight */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border-radius: 0;           /* keep SVG edges crisp */
+  border-radius: 0;
+  /* keep SVG edges crisp */
 }
 
 /* Major clashes */
@@ -432,8 +446,10 @@ a.readmore {
 .swatch.square {
   width: 1rem;
   height: 1rem;
-  border-radius: 2px;   /* slight rounding to match other swatches */
-  opacity: 1;           /* solid color */
+  border-radius: 2px;
+  /* slight rounding to match other swatches */
+  opacity: 1;
+  /* solid color */
 }
 
 /* Dark teal */
@@ -486,7 +502,7 @@ a.readmore {
   transition: opacity 200ms ease-out, border-color 200ms ease-out;
 }
 
-.chapter .step + .step {
+.chapter .step+.step {
   margin-top: 1.5rem;
 }
 
