@@ -28,7 +28,8 @@ const scenes = {
         opacity: [
           { layerKey: "sudan-countries", to: 1, transition: { duration: 900, delay: 0 } },
           { layerKey: "sudan-country-labels", to: 1, transition: { duration: 900, delay: 250 } },
-          { layerKey: "rsf", to: 1, transition: { duration: 900, delay: 250 } }
+          { layerKey: "rsf", to: 1, transition: { duration: 900, delay: 250 } },
+          { layerKey: "refugee_data", to: 0 }
         ]
       },
       "world-order-2": {
